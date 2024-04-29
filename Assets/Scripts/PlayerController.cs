@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-        
+            playerRb.velocity = Vector2.Lerp(playerRb.velocity, Vector2.zero, STOP_FRICTION * Time.deltaTime);
         }
 
 
