@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 direction;
     private Rigidbody2D playerRb;
     [SerializeField] float SPEED;
-    [SerializeField] float STOP_FRICTION;
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +21,10 @@ public class PlayerController : MonoBehaviour
     {
         GetInput();
 
-        if (direction.sqrMagnitude > 0)
-        {
-            playerRb.velocity = direction * SPEED * Time.deltaTime;
-        }
-        else
-        {
-            playerRb.velocity = Vector2.Lerp(playerRb.velocity, Vector2.zero, STOP_FRICTION * Time.deltaTime);
-        }
+
+        playerRb.velocity = direction * SPEED * Time.deltaTime;
+        
+
 
 
     }
