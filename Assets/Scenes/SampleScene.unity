@@ -4623,6 +4623,7 @@ GameObject:
   - component: {fileID: 823297804}
   - component: {fileID: 823297803}
   - component: {fileID: 823297802}
+  - component: {fileID: 823297807}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4642,7 +4643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4c51eb3b676214085f494bf260d1be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SPEED: 600
+  speed: 600
 --- !u!50 &823297803
 Rigidbody2D:
   serializedVersion: 4
@@ -4772,6 +4773,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &823297807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823297801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e91c25afdc4d042897753e3f281110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1463380090
 GameObject:
   m_ObjectHideFlags: 0

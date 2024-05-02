@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
 
-    private Vector2 direction;
-    private Rigidbody2D playerRb;
-    [SerializeField] float SPEED;
+    private Vector2 _direction;
+    private Rigidbody2D _playerRb;
+    [SerializeField] float speed;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody2D>();
+        _playerRb = GetComponent<Rigidbody2D>();
         
     }
 
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
         GetInput();
 
 
-        playerRb.velocity = direction * SPEED * Time.deltaTime;
+        _playerRb.velocity = _direction * (speed * Time.deltaTime);
         
 
 
@@ -31,10 +32,10 @@ public class PlayerController : MonoBehaviour
 
     private void GetInput()
     {
-        direction.x = Input.GetAxis("Horizontal");
-        direction.y = Input.GetAxis("Vertical");
+        _direction.x = Input.GetAxis("Horizontal");
+        _direction.y = Input.GetAxis("Vertical");
 
-        direction.Normalize();
+        _direction.Normalize();
     }
 
 }
