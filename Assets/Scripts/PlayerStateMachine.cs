@@ -9,13 +9,27 @@ public class PlayerStateMachine : MonoBehaviour
         
     }
 
-    private PlayerState _currentState;
+    private PlayerController _playerController;
+    private PlayerState _currentState ;
     private PlayerState _nextState;
+    
+    private Rigidbody2D _playerRb;
+
+    // Stats
+    [SerializeField] private int speed;
+    private float speedModifier = 1.0f;
     
 
 
+    private void Start()
+    {
+        _playerController = GetComponent<PlayerController>();
+        _playerRb = GetComponent<Rigidbody2D>();
+        _currentState = PlayerState.Move;
+    }
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         switch (_currentState)
         {
@@ -25,7 +39,6 @@ public class PlayerStateMachine : MonoBehaviour
             case PlayerState.Attack:
                 Attack();
                 break;
-
         }
         
     }
@@ -37,6 +50,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Move()
     {
-        throw new System.NotImplementedException();
+        _playerRb.velocity = _playerController.direction * (speed * speedModifier * Time.deltaTime);
+
     }
 }
