@@ -5140,7 +5140,7 @@ GameObject:
   - component: {fileID: 823297803}
   - component: {fileID: 823297802}
   - component: {fileID: 823297807}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5361,7 +5361,7 @@ GameObject:
   - component: {fileID: 1620361383}
   - component: {fileID: 1620361382}
   - component: {fileID: 1620361381}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MeleeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
