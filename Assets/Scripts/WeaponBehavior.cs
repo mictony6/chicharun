@@ -6,6 +6,7 @@ using UnityEngine;
 public class WeaponBehavior : MonoBehaviour
 {
     GameObject player;
+    CombatBehavior playerCb;
     [SerializeField] private GameObject bulletPrefab;
     private Vector3 cursorPosition;
 
@@ -14,6 +15,7 @@ public class WeaponBehavior : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        playerCb = player.GetComponent<CombatBehavior>();
     }
     // Update is called once per frame
     void Update()
@@ -33,5 +35,6 @@ public class WeaponBehavior : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = transform.right * 10;
+        bullet.GetComponent<DamageOnHit>().SetDamage(playerCb.damage);
     }
 }
