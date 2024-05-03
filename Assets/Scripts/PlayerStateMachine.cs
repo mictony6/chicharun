@@ -65,22 +65,11 @@ public class PlayerStateMachine : MonoBehaviour
     private void Attack()
     {
         _playerRb.velocity = Vector2.zero;
-        // StartCoroutine(AttackRoutine());
         weaponBehavior.Shoot();
         _nextState = PlayerState.Move;
 
     }
 
-    private IEnumerator AttackRoutine()
-    {
-
-        speedModifier = 0.0f;
-        weaponBehavior.Shoot();
-        _nextState = PlayerState.Move;
-        yield return new WaitForSeconds(0.5f);
-        speedModifier = 1.0f;
-
-    }
 
     private void Move()
     {
