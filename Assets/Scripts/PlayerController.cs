@@ -6,12 +6,23 @@ public class PlayerController : MonoBehaviour
 {
 
     public Vector2 direction;
+    public Vector2 lastDirection;
+    public int speed;
+    private float speedModifier = 1.0f;
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
 
     // Update is called once per frame
     void Update()
     {
         GetInput();
-
+        if (direction != Vector2.zero)
+        {
+            lastDirection = direction;
+        }
     }
 
     private void GetInput()
@@ -21,5 +32,4 @@ public class PlayerController : MonoBehaviour
 
         direction.Normalize();
     }
-
 }
