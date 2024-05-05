@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyStateMachine : MonoBehaviour
@@ -15,14 +13,20 @@ public class EnemyStateMachine : MonoBehaviour
     private EnemyStateTypes _currentState;
     private EnemyStateTypes _nextState;
 
+    public GameObject targetPlayer;
+    public Vector2 playerLastLocation;
+    public Vector2 targetLocation;
+    public Vector2 chaseDirection;
 
-   
-    private static EnemyStateMachine _instance;
+
+    public Rigidbody2D rigidBody { get; internal set; }
+    public int speed = 100; 
 
     private void Start()
     {
-
-        _instance = this;
+        targetPlayer = GameObject.Find("Player");
+        rigidBody = GetComponent<Rigidbody2D>();
+ 
 
 
         InitStates();
@@ -65,9 +69,6 @@ public class EnemyStateMachine : MonoBehaviour
         _nextState = _prevState;
     }
 
-    public static EnemyStateMachine GetInstance()
-    {
-        return _instance;
-    }
+ 
 
 }

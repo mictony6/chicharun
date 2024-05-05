@@ -18,9 +18,7 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerController playerController;
     public Rigidbody2D rigidBody;
     public WeaponBehavior weaponBehavior;
-   
-
-    private static PlayerStateMachine _instance;
+  
 
 
 
@@ -30,7 +28,6 @@ public class PlayerStateMachine : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         rigidBody = GetComponent<Rigidbody2D>();
         weaponBehavior = GetComponentInChildren<WeaponBehavior>();
-        _instance = this;
 
 
         InitStates();
@@ -116,10 +113,5 @@ public class PlayerStateMachine : MonoBehaviour
     public void TransitionToPrev()
     {
         _nextState = _prevState;
-    }
-
-    public static PlayerStateMachine GetInstance()
-    {
-        return _instance;
     }
 }

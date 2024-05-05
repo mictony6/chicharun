@@ -1,5 +1,4 @@
-using System.Numerics;
-
+using UnityEngine;
 public class EnemyChase : EnemyState
 {
 
@@ -19,6 +18,14 @@ public class EnemyChase : EnemyState
 
     public override void OnUpdate()
     {
+        enemy.chaseDirection = GetDirectionToPlayer();
+        enemy.rigidBody.velocity = enemy.chaseDirection * (enemy.speed * Time.deltaTime);
 
+
+    }
+
+    private Vector2 GetDirectionToPlayer()
+    {
+        return (enemy.targetPlayer.transform.position - enemy.transform.position).normalized;
     }
 }

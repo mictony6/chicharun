@@ -20,7 +20,7 @@ public class IdleState :  PlayerState
     {
         if (player.playerController.direction.x != 0 || player.playerController.direction.y != 0)
         {
-            PlayerStateMachine.GetInstance().TransitionTo(StateTypes.Move);
+            player.TransitionTo(StateTypes.Move);
         }
     }
 }
