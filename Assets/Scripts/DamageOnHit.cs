@@ -12,16 +12,21 @@ public class DamageOnHit : MonoBehaviour
         this.damage = damage;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("Bullet"))
+        if (collision.CompareTag("Enemies"))
         {
-            CombatBehavior targetCb = collision.gameObject.GetComponent<CombatBehavior>();
+            Debug.Log(collision.gameObject.name);
+            CombatBehavior targetCb = collision.gameObject.GetComponentInParent<CombatBehavior>();
             targetCb.TakeDamage(damage);
             Destroy(gameObject);
         }
-
     }
+
 
 
 }
