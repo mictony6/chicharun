@@ -12,8 +12,8 @@ public class PlayerStateMachine : MonoBehaviour
     Dictionary<StateTypes, IState> states = new Dictionary<StateTypes, IState>();
 
     private StateTypes _prevState;
-    private StateTypes _currentState = StateTypes.Idle;
-    private StateTypes _nextState;
+    private StateTypes _currentState;
+    private StateTypes? _nextState = null;
 
     public PlayerController playerController;
     public Rigidbody2D rigidBody;
@@ -34,6 +34,8 @@ public class PlayerStateMachine : MonoBehaviour
 
 
         InitStates();
+
+        _currentState = StateTypes.Idle; ;
     }
 
     void InitStates()
@@ -47,11 +49,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _nextState = StateTypes.Attack;
         }
+
 
         animator.SetFloat("xDir", playerController.direction.x);
         animator.SetFloat("yDir", playerController.direction.y);
@@ -66,12 +68,12 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (_nextState != _currentState)
+        if (_nextState != null  && _nextState != _currentState)
         {
 
             states[_currentState].OnExit();
             _prevState = _currentState;
-            _currentState = _nextState;
+            _currentState = (StateTypes) _nextState;
             states[_currentState].OnEnter();
 
 

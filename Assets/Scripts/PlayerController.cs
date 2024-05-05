@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 direction;
     public Vector2 lastDirection;
-    public int speed;
+    private int speed = 150;
     private float speedModifier = 1.0f;
     // Start is called before the first frame update
     void Start()
@@ -31,5 +32,10 @@ public class PlayerController : MonoBehaviour
         direction.y = Input.GetAxis("Vertical");
 
         direction.Normalize();
+    }
+
+    public float GetSpeed()
+    {
+        return speed * speedModifier;
     }
 }

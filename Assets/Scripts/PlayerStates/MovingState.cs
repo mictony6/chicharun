@@ -20,7 +20,7 @@ public class MovingState :  PlayerState
         {
             player.TransitionTo(StateTypes.Idle);
         }
-        player.rigidBody.velocity = player.playerController.direction * (player.playerController.speed * Time.deltaTime);
+        player.rigidBody.velocity = player.playerController.direction * (player.playerController.GetSpeed() * Time.deltaTime);
 
 
     }
