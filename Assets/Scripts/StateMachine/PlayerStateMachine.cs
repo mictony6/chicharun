@@ -55,6 +55,8 @@ public class PlayerStateMachine : MonoBehaviour
         animator.SetFloat("xDir", playerController.direction.x);
         animator.SetFloat("yDir", playerController.direction.y);
 
+        animator.SetBool("moveY", (playerController.direction.y != 0));
+
 
 
 
