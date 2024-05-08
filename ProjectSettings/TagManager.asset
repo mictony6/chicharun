@@ -16,7 +16,7 @@ TagManager:
   - Player Projectiles
   - Player
   - Enemies
-  - 
+  - Obstacles
   - 
   - 
   - 
@@ -45,6 +45,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1032568231
+    locked: 0
+  - name: Obstacles
+    uniqueID: 3518508945
     locked: 0
   - name: Foreground
     uniqueID: 4077343583
