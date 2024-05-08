@@ -2,7 +2,8 @@ public enum StateTypes
 {
     Attack,
     Move,
-    Idle
+    Idle,
+    Death
 }
 
 public enum EnemyStateTypes

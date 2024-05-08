@@ -20,7 +20,6 @@ public class DamageOnHit : MonoBehaviour
     {
         if (collision.CompareTag("Enemies"))
         {
-            Debug.Log(collision.gameObject.name);
             CombatBehavior targetCb = collision.gameObject.GetComponentInParent<CombatBehavior>();
             targetCb.TakeDamage(damage);
             Destroy(gameObject);

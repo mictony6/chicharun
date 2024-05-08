@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateMachine : MonoBehaviour
+public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
 {
     private Animator animator;
+    private CombatBehavior combatBehavior;
 
     Dictionary<EnemyStateTypes, IState> states = new Dictionary<EnemyStateTypes, IState>();
 
@@ -18,6 +19,8 @@ public class EnemyStateMachine : MonoBehaviour
     public Vector2 targetLocation;
     public Vector2 chaseDirection;
 
+    [SerializeField] public GameObject deathParticle;
+
 
     public Rigidbody2D rigidBody { get; internal set; }
     public int speed = 100; 
@@ -26,6 +29,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         targetPlayer = GameObject.Find("Player");
         rigidBody = GetComponent<Rigidbody2D>();
+        combatBehavior = GetComponent<CombatBehavior>();
  
 
 
@@ -39,6 +43,14 @@ public class EnemyStateMachine : MonoBehaviour
         states[EnemyStateTypes.Attack]= new EnemyAttack(this);
         states[EnemyStateTypes.Death] = new EnemyDeath(this);
 
+    }
+
+    void Update()
+    {
+        if (combatBehavior.currentHealth <= 0)
+        {
+            TransitionTo(EnemyStateTypes.Death);
+        }
     }
 
 

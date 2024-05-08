@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1964969553008363530}
   - component: {fileID: 8855081916640414561}
   - component: {fileID: 6098475972995861132}
-  - component: {fileID: 2674882051508735612}
   - component: {fileID: 415522482242976096}
   - component: {fileID: 2142039451515259887}
+  - component: {fileID: 367573674283349414}
   m_Layer: 8
   m_Name: MeleeEnemy
   m_TagString: Enemies
@@ -170,18 +170,6 @@ MonoBehaviour:
   currentHealth: 0
   damage: 1
   defense: 0
---- !u!114 &2674882051508735612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422999275901736758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c37e306b84779b47b432170f1d6096c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &415522482242976096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +186,7 @@ MonoBehaviour:
   playerLastLocation: {x: 0, y: 0}
   targetLocation: {x: 0, y: 0}
   chaseDirection: {x: 0, y: 0}
+  deathParticle: {fileID: 1338728441980871077, guid: eb1c33740e9efde479ef267ce9fb3165, type: 3}
   speed: 100
 --- !u!95 &2142039451515259887
 Animator:
@@ -220,6 +209,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &367573674283349414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422999275901736758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880b2ff64a3546b43949ffc0e91e2f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1173393560072553720
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,8 +231,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5721323676461907898}
   - component: {fileID: 6568008004570475784}
-  m_Layer: 8
-  m_Name: Hitbox
+  m_Layer: 10
+  m_Name: MeleeEnemyHitbox
   m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,5 +286,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.048074305}
-  m_Size: {x: 0.59840775, y: 1.0932142}
+  m_Size: {x: 0.6196228, y: 1.0932142}
   m_Direction: 0

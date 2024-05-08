@@ -5,7 +5,7 @@ using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerStateMachine : MonoBehaviour
+public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
 {
     private Animator animator;
 
@@ -18,6 +18,7 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerController playerController;
     public Rigidbody2D rigidBody;
     public WeaponBehavior weaponBehavior;
+    public CombatBehavior combatBehavior;
   
 
 
@@ -28,6 +29,7 @@ public class PlayerStateMachine : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         rigidBody = GetComponent<Rigidbody2D>();
         weaponBehavior = GetComponentInChildren<WeaponBehavior>();
+        combatBehavior = GetComponent<CombatBehavior>();
 
 
         InitStates();
@@ -41,6 +43,7 @@ public class PlayerStateMachine : MonoBehaviour
         states[StateTypes.Move] = new MovingState(this);
         states[StateTypes.Attack] = new AttackState(this);
         states[StateTypes.Idle] = new IdleState(this);
+        states[StateTypes.Death] = new DeathState(this);
 
     }
 
@@ -57,7 +60,10 @@ public class PlayerStateMachine : MonoBehaviour
 
         animator.SetBool("moveY", (playerController.direction.y != 0));
 
-
+        if (combatBehavior.currentHealth <= 0)
+        {
+            TransitionTo(StateTypes.Death);
+        }
 
 
 
