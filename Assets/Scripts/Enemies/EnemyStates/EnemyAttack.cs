@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class EnemyAttack : EnemyState
 {
     public EnemyAttack(EnemyStateMachine enemy) : base(enemy)
@@ -5,16 +7,20 @@ public class EnemyAttack : EnemyState
     }
 
     public override void OnEnter(){
-
+        CombatBehavior playerCb = enemy.targetPlayer.GetComponent<CombatBehavior>();
+        playerCb.TakeDamage(enemy.combatBehavior.damage);
+        enemy.TransitionTo(EnemyStateTypes.Death);
     }
 
     public override void OnExit()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void OnUpdate()
     {
-        throw new System.NotImplementedException();
+
     }
+
+
 }

@@ -134,6 +134,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   rigidBody: {fileID: 0}
   weaponBehavior: {fileID: 0}
+  combatBehavior: {fileID: 0}
 --- !u!114 &1195768288879650774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,5 +395,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.92301744, y: 1.0722871}
+  m_Size: {x: 0.6795503, y: 0.9369402}
   m_EdgeRadius: 0

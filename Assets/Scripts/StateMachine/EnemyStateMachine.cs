@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
 {
     private Animator animator;
-    private CombatBehavior combatBehavior;
+    public CombatBehavior combatBehavior;
 
     Dictionary<EnemyStateTypes, IState> states = new Dictionary<EnemyStateTypes, IState>();
 

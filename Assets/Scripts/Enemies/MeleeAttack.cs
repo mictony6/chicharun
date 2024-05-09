@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
-    GameObject player;
-    // Start is called before the first frame update
-    void Start()
+    EnemyStateMachine enemy;
+
+    private void Start()
     {
-        player = GameObject.Find("Player");
-        
+        enemy = gameObject.GetComponent<EnemyStateMachine>();
     }
 
     // Update is called once per frame
@@ -21,12 +20,11 @@ public class MeleeAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CombatBehavior playerCb = player.GetComponent<CombatBehavior>();
-        CombatBehavior enemyCb = gameObject.GetComponent<CombatBehavior>();
-        playerCb.TakeDamage(enemyCb.damage);
-        EnemyStateMachine enemy = gameObject.GetComponent<EnemyStateMachine>();
-        enemy.TransitionTo(EnemyStateTypes.Death);
-
+        
+        if (collision.CompareTag("Player"))
+        {
+            enemy.TransitionTo(EnemyStateTypes.Attack);
+        }
 
     }
 
