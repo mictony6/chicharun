@@ -464,13 +464,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: -382283369
-    name: Enemy_Spritesheet
+    guid: -1614055557
+    name: Enemy_Spritesheet_Old
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Enemy_Spritesheet
+    - name: Enemy_Spritesheet_Old
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -478,7 +478,7 @@ ScriptedImporter:
         y: 33
         width: 125
         height: 127
-      spriteId: 21db069d5512907409002d3c36bcfb76
+      spriteId: bc229b0da9cb38b4eac8d6f20880adc0
     linkedCells: []
     parentIndex: -1
   platformSettings:

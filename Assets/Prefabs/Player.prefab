@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: -217623713
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1350503000201622860, guid: f648fae2561b57c42a2008271d6a7ee2, type: 3}
+  m_Sprite: {fileID: 777149974, guid: 85fcff3ed4c32d94a8efcd27933936f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,6 +152,8 @@ MonoBehaviour:
   currentHealth: 0
   damage: 1
   defense: 0
+  exp: 0
+  nextLevelThreshold: 0
 --- !u!95 &2609152801628452449
 Animator:
   serializedVersion: 5
@@ -304,7 +306,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &3131293965628179011
