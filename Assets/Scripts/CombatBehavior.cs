@@ -11,6 +11,8 @@ public class CombatBehavior : MonoBehaviour
     public int currentHealth;
     public int damage;
     public int defense;
+    public int exp;
+    public int nextLevelThreshold;
 
     void Start()
     {
@@ -52,5 +54,7 @@ public class CombatBehavior : MonoBehaviour
         Debug.Log("Damage: " + damage);
         Debug.Log("Defense: " + defense);
     }
+
+
 
 }
