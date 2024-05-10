@@ -472,7 +472,6 @@ ScriptedImporter:
     cells:
     - name: Enemy_Spritesheet_Old
       frameIndex: 0
-      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 33

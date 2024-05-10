@@ -192,7 +192,6 @@ ScriptedImporter:
     cells:
     - name: hearts
       frameIndex: 0
-      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
