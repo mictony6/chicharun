@@ -3,8 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum EnemyType
+{
+    Meelee,
+    Ranged
+}
 public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
 {
+
+    [SerializeField] public EnemyType enemyType;
     private Animator animator;
     public CombatBehavior combatBehavior;
 
@@ -20,6 +28,12 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
     public Vector2 chaseDirection;
 
     [SerializeField] public GameObject deathParticle;
+    [SerializeField] public GameObject projectilePrefab;
+
+    // timer stuff
+    private float attackInterval = 1.0f;
+    private float timeTillNextAttack = 1.0f;
+    public bool canAttack = true;
 
 
     public Rigidbody2D rigidBody { get; internal set; }
@@ -47,6 +61,16 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
 
     void Update()
     {
+        if (timeTillNextAttack <= 0)
+        {
+            canAttack = true;
+            timeTillNextAttack = attackInterval;
+        }
+        else
+        {
+            timeTillNextAttack -= Time.deltaTime;
+        }
+
         if (combatBehavior.currentHealth <= 0)
         {
             TransitionTo(EnemyStateTypes.Death);
@@ -73,6 +97,10 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
 
     public void TransitionTo(EnemyStateTypes nextState)
     {
+        if (nextState == EnemyStateTypes.Attack && !canAttack)
+        {
+            return;
+        }
         _nextState = nextState;
     }
 

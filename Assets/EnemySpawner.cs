@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject meleeEnemyPrefab;
-    GameObject rangedEnemyPrefab;
+    [SerializeField] GameObject rangedEnemyPrefab;
     private float spawnRate;
     private float meleeSpawnChance;
     private float rangedSpawnChance;
@@ -14,7 +14,8 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        meleeSpawnChance = 0.5f;
+        meleeSpawnChance = 0f;
+        rangedSpawnChance = 0.25f;
         spawnRate = 1.0f;
         
     }
@@ -25,10 +26,15 @@ public class EnemySpawner : MonoBehaviour
         if (timeToNextSpawn <= 0)
         {
             float roll = Random.value;
-            if (roll <= meleeSpawnChance)
+            if (roll <= rangedSpawnChance)
+            {
+                GameObject.Instantiate(rangedEnemyPrefab, transform.position, Quaternion.identity);
+            }
+            else if (roll <= meleeSpawnChance)
             {
                 GameObject.Instantiate(meleeEnemyPrefab, transform.position, Quaternion.identity);
             }
+
             timeToNextSpawn = spawnRate;
         }
 
