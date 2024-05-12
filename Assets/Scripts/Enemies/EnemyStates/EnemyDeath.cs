@@ -8,6 +8,11 @@ public class EnemyDeath : EnemyState
 
     public override void OnEnter()
     {
+        if (enemy.targetPlayer)
+        {
+            CombatBehavior playerCb = enemy.targetPlayer.GetComponent<CombatBehavior>();
+            playerCb.collectExp(enemy.combatBehavior.expDrop);
+        }
         GameObject.Instantiate(enemy.deathParticle, enemy.transform.position, Quaternion.identity);
         GameObject.Destroy(enemy.gameObject);
 

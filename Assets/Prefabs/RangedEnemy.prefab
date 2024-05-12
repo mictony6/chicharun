@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6098475972995861132}
   - component: {fileID: 415522482242976096}
   - component: {fileID: 2142039451515259887}
-  - component: {fileID: 367573674283349414}
   m_Layer: 8
   m_Name: RangedEnemy
   m_TagString: Enemies
@@ -172,6 +171,7 @@ MonoBehaviour:
   defense: 0
   exp: 0
   nextLevelThreshold: 0
+  expDrop: 15
 --- !u!114 &415522482242976096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,18 +217,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &367573674283349414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422999275901736758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880b2ff64a3546b43949ffc0e91e2f42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1173393560072553720
 GameObject:
   m_ObjectHideFlags: 0

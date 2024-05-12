@@ -172,6 +172,7 @@ MonoBehaviour:
   defense: 0
   exp: 0
   nextLevelThreshold: 0
+  expDrop: 10
 --- !u!114 &415522482242976096
 MonoBehaviour:
   m_ObjectHideFlags: 0

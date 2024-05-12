@@ -12,7 +12,8 @@ public class CombatBehavior : MonoBehaviour
     public int damage;
     public int defense;
     public int exp;
-    public int nextLevelThreshold;
+    public float nextLevelThreshold;
+    public int expDrop;
 
     void Start()
     {
@@ -53,6 +54,16 @@ public class CombatBehavior : MonoBehaviour
         Debug.Log("Health: " + currentHealth + "/" + maxHealth);
         Debug.Log("Damage: " + damage);
         Debug.Log("Defense: " + defense);
+    }
+
+    public void collectExp(int exp)
+    {
+        this.exp += exp;
+        if (this.exp > nextLevelThreshold)
+        {
+            level += 1;
+            nextLevelThreshold *=2;
+        }
     }
 
 
