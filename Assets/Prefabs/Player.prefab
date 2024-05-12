@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3657333809509825545}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,9 +100,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046579338651268584}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 3131293965628179011}
   m_Layer: 0
   m_Name: PlayerWeapon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,7 +298,7 @@ SpriteRenderer:
   m_SortingLayerID: -217623713
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8509949652433908085, guid: f648fae2561b57c42a2008271d6a7ee2, type: 3}
+  m_Sprite: {fileID: 186447293, guid: 85fcff3ed4c32d94a8efcd27933936f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -306,7 +306,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &3131293965628179011

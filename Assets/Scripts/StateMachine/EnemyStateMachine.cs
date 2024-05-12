@@ -6,7 +6,7 @@ using UnityEngine;
 
 public enum EnemyType
 {
-    Meelee,
+    Melee,
     Ranged
 }
 public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
@@ -31,13 +31,13 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
     [SerializeField] public GameObject projectilePrefab;
 
     // timer stuff
-    private float attackInterval = 1.0f;
-    private float timeTillNextAttack = 1.0f;
-    public bool canAttack = true;
+    public float attackInterval = 1.0f;
+    public float timeTillNextAttack = 1.0f;
+    public bool canAttack = false;
 
 
     public Rigidbody2D rigidBody { get; internal set; }
-    public int speed = 100; 
+    public int speed = 75; 
 
     private void Start()
     {
@@ -56,25 +56,19 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
         states[EnemyStateTypes.Chase] = new EnemyChase(this);
         states[EnemyStateTypes.Attack]= new EnemyAttack(this);
         states[EnemyStateTypes.Death] = new EnemyDeath(this);
+        states[EnemyStateTypes.Idle] = new EnemyIdle(this);
+
 
     }
 
     void Update()
     {
-        if (timeTillNextAttack <= 0)
-        {
-            canAttack = true;
-            timeTillNextAttack = attackInterval;
-        }
-        else
-        {
-            timeTillNextAttack -= Time.deltaTime;
-        }
 
         if (combatBehavior.currentHealth <= 0)
         {
             TransitionTo(EnemyStateTypes.Death);
         }
+
     }
 
 
@@ -93,14 +87,13 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
         }
         states[_currentState].OnUpdate();
 
+
+
     }
 
     public void TransitionTo(EnemyStateTypes nextState)
     {
-        if (nextState == EnemyStateTypes.Attack && !canAttack)
-        {
-            return;
-        }
+
         _nextState = nextState;
     }
 
@@ -109,6 +102,7 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
         _nextState = _prevState;
     }
 
- 
+
+
 
 }

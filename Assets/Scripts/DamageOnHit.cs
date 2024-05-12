@@ -6,6 +6,7 @@ using UnityEngine;
 public class DamageOnHit : MonoBehaviour
 {
     int damage = 0;
+    [SerializeField] string tagToDamage;
 
     public void SetDamage(int damage)
     {
@@ -14,16 +15,14 @@ public class DamageOnHit : MonoBehaviour
 
 
 
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemies"))
+        if (collision.CompareTag(tagToDamage))
         {
             CombatBehavior targetCb = collision.gameObject.GetComponentInParent<CombatBehavior>();
             targetCb.TakeDamage(damage);
             Destroy(gameObject);
-        }
+        } 
     }
 
 

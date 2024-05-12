@@ -1,14 +1,18 @@
 using System;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 public class EnemyChase : EnemyState
 {
-
+    public float rayDistance = 0.5f; // Length of the raycast
     public EnemyChase(EnemyStateMachine enemy) : base(enemy)
     {
     }
 
     public override void OnEnter()
     {
+        enemy.chaseDirection = GetDirectionToPlayer();
+        enemy.rigidBody.bodyType = RigidbodyType2D.Dynamic;
+
 
     }
 
@@ -23,13 +27,16 @@ public class EnemyChase : EnemyState
         {
             switch (enemy.enemyType)
             {
-                case EnemyType.Meelee:
+                case EnemyType.Melee:
                     MeleeChase();
                     break;
                 case EnemyType.Ranged:
                     RangedChase();
                     break;
             }
+
+
+
         }
         else
         {
@@ -41,25 +48,38 @@ public class EnemyChase : EnemyState
 
     private void RangedChase()
     {
-        enemy.chaseDirection = GetDirectionToPlayer();
-        enemy.rigidBody.velocity = enemy.chaseDirection * (enemy.speed * Time.deltaTime);
         float distanceFromPlayer = (enemy.transform.position - enemy.targetPlayer.transform.position).sqrMagnitude;
-        if(distanceFromPlayer < 10.0f)
+        if(distanceFromPlayer < 20.0f)
         {
             enemy.TransitionTo(EnemyStateTypes.Attack);
+            return;
         }
+        enemy.chaseDirection = GetDirectionToPlayer();
+        enemy.rigidBody.velocity = enemy.chaseDirection * (enemy.speed * Time.deltaTime);
 
     }
 
     private void MeleeChase()
     {
+        float distanceFromPlayer = (enemy.transform.position - enemy.targetPlayer.transform.position).sqrMagnitude;
+        if (distanceFromPlayer < 10.0f)
+        {
+            enemy.TransitionTo(EnemyStateTypes.Attack);
+        }
         enemy.chaseDirection = GetDirectionToPlayer();
         enemy.rigidBody.velocity = enemy.chaseDirection * (enemy.speed * Time.deltaTime);
+
+
     }
 
     private Vector2 GetDirectionToPlayer()
     {
-        return (enemy.targetPlayer.transform.position - enemy.transform.position).normalized;
+        if (enemy.targetPlayer)
+        {
+            return (enemy.targetPlayer.transform.position - enemy.transform.position).normalized;
+        }
+
+        return Vector2.zero;
     }
 
 }

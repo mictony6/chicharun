@@ -23,7 +23,12 @@ public class MeleeAttack : MonoBehaviour
         
         if (collision.CompareTag("Player"))
         {
-            enemy.TransitionTo(EnemyStateTypes.Attack);
+            CombatBehavior playerCb = collision.gameObject.GetComponentInParent<CombatBehavior>();
+            if (playerCb != null)
+            {
+                playerCb.TakeDamage(enemy.combatBehavior.damage);
+            }
+            enemy.TransitionTo(EnemyStateTypes.Death);
         }
 
     }

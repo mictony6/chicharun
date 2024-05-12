@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        meleeSpawnChance = 0f;
+        meleeSpawnChance = 0.5f;
         rangedSpawnChance = 0.25f;
         spawnRate = 1.0f;
         

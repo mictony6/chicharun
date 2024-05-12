@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 direction;
     public Vector2 lastDirection;
-    private int speed = 150;
+    private int speed = 200;
     private float speedModifier = 1.0f;
     // Start is called before the first frame update
     void Start()

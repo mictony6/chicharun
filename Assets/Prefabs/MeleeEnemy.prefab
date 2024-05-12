@@ -107,7 +107,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d63fa3bac88410441a059c865e63ec0f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -184,13 +184,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c27e0fafa7a9943985ff99934437c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   combatBehavior: {fileID: 0}
   targetPlayer: {fileID: 0}
   playerLastLocation: {x: 0, y: 0}
   targetLocation: {x: 0, y: 0}
   chaseDirection: {x: 0, y: 0}
   deathParticle: {fileID: 1338728441980871077, guid: eb1c33740e9efde479ef267ce9fb3165, type: 3}
-  speed: 100
+  projectilePrefab: {fileID: 0}
+  attackInterval: 2
+  timeTillNextAttack: 1
+  canAttack: 1
+  speed: 75
 --- !u!95 &2142039451515259887
 Animator:
   serializedVersion: 5
