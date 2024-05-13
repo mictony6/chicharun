@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 GameObject.Instantiate(rangedEnemyPrefab, transform.position, Quaternion.identity);
             }
-            if (roll <= meleeSpawnChance)
+         if (roll <= meleeSpawnChance)
             {
                 GameObject.Instantiate(meleeEnemyPrefab, transform.position, Quaternion.identity);
             }
