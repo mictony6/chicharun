@@ -19,7 +19,9 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
     public Rigidbody2D rigidBody;
     public WeaponBehavior weaponBehavior;
     public CombatBehavior combatBehavior;
-  
+
+    [SerializeField] public GameObject gameOverUI;
+
 
 
 
