@@ -36,6 +36,7 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
     public bool canAttack = false;
 
 
+
     public Rigidbody2D rigidBody { get; internal set; }
     public int speed = 75; 
 
