@@ -10,6 +10,7 @@ public class DeathState : PlayerState
     public override void OnEnter()
     {
         GameObject.Destroy(player.gameObject);
+        player.gameOverUI.SetActive(true);
     }
 
     public override void OnExit()
