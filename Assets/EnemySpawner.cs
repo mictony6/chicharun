@@ -6,9 +6,9 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject meleeEnemyPrefab;
     [SerializeField] GameObject rangedEnemyPrefab;
-    private float spawnRate;
-    private float meleeSpawnChance;
-    private float rangedSpawnChance;
+    [SerializeField] private float spawnRate;
+    [SerializeField] private float meleeSpawnChance;
+    [SerializeField] private float rangedSpawnChance;
     private float timeToNextSpawn;
 
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 GameObject.Instantiate(rangedEnemyPrefab, transform.position, Quaternion.identity);
             }
-            else if (roll <= meleeSpawnChance)
+            if (roll <= meleeSpawnChance)
             {
                 GameObject.Instantiate(meleeEnemyPrefab, transform.position, Quaternion.identity);
             }
