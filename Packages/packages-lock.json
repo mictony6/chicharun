@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.stalengd.quickruletileeditor": {
+      "version": "https://github.com/stalengd/QuickRuleTileEditor.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "a18fad10568c7f5ca1c0b4a020f37a54ea91481b"
+    },
     "com.unity.2d.animation": {
       "version": "9.1.0",
       "depth": 1,
