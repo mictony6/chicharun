@@ -11,6 +11,8 @@ public class DeathState : PlayerState
     {
         GameObject.Destroy(player.gameObject);
         player.gameOverUI.SetActive(true);
+
+        // myrtlle put restart logic here
     }
 
     public override void OnExit()
