@@ -8,13 +8,14 @@ using static UnityEngine.EventSystems.EventTrigger;
 public enum EnemyType
 {
     Melee,
-    Ranged
+    Ranged,
+    Boss
 }
 public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
 {
 
     [SerializeField] public EnemyType enemyType;
-    private Animator animator;
+    public Animator animator;
     public CombatBehavior combatBehavior;
 
     Dictionary<EnemyStateTypes, IState> states = new Dictionary<EnemyStateTypes, IState>();
@@ -46,6 +47,10 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
         targetPlayer = GameObject.Find("Player");
         rigidBody = GetComponent<Rigidbody2D>();
         combatBehavior = GetComponent<CombatBehavior>();
+        if (enemyType == EnemyType.Boss)
+        {
+            animator = GetComponent<Animator>();
+        }
  
 
 

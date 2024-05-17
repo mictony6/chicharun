@@ -33,6 +33,9 @@ public class EnemyChase : EnemyState
                 case EnemyType.Ranged:
                     RangedChase();
                     break;
+                case EnemyType.Boss:
+                    BossChase();
+                    break;
             }
 
 
@@ -44,6 +47,23 @@ public class EnemyChase : EnemyState
         }
 
 
+    }
+
+    private void BossChase()
+    {
+        float distanceFromPlayer = (enemy.transform.position - enemy.targetPlayer.transform.position).sqrMagnitude;
+        if (distanceFromPlayer < 10.0f)
+        {
+            if (enemy.canAttack)
+            {
+                enemy.TransitionTo(EnemyStateTypes.Attack);
+            }
+
+        }
+
+        enemy.chaseDirection = GetDirectionToPlayer();
+        enemy.animator.SetFloat("xDir", enemy.chaseDirection.x);
+        enemy.rigidBody.velocity = enemy.chaseDirection * (enemy.speed * Time.deltaTime);
     }
 
     private void RangedChase()

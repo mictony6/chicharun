@@ -21,6 +21,8 @@ public class EnemyAttack : EnemyState
     {
         enemy.rigidBody.bodyType = RigidbodyType2D.Dynamic;
         enemy.canAttack = false;
+        enemy.animator.SetBool("isAttack",false);
+
 
     }
 
@@ -34,12 +36,30 @@ public class EnemyAttack : EnemyState
             case EnemyType.Ranged:
                 RangedAttack();
                 break;
+            case EnemyType.Boss:
+                BossAttack();
+                break;
         }
 
 
 
 
 
+    }
+
+    private async void BossAttack()
+    {
+        enemy.animator.SetBool("isAttack", true);
+
+        enemy.animator.SetFloat("xDir", enemy.chaseDirection.x);
+        if (enemy != null)
+        {
+            enemy.rigidBody.velocity = (enemy.chaseDirection * (enemy.speed * Time.deltaTime)) * 3;
+        }
+        enemy.canAttack = false;
+        enemy.timeTillNextAttack = enemy.attackInterval;
+        await WaitSeconds(1);
+        enemy.TransitionTo(EnemyStateTypes.Chase);
     }
 
     private async void MeleeAttack()
@@ -56,7 +76,7 @@ public class EnemyAttack : EnemyState
 
 
     }
-    private async void RangedAttack()
+    private void RangedAttack()
     {
         enemy.canAttack = false;
         enemy.timeTillNextAttack = enemy.attackInterval;
