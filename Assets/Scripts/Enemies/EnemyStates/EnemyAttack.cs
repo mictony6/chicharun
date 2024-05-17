@@ -46,7 +46,6 @@ public class EnemyAttack : EnemyState
     {
         if (enemy != null)
         {
-            enemy.chaseDirection = GetDirectionToPlayer();
             enemy.rigidBody.velocity = (enemy.chaseDirection * (enemy.speed * Time.deltaTime)) * 3;
         }
         enemy.canAttack = false;
@@ -63,11 +62,7 @@ public class EnemyAttack : EnemyState
         enemy.timeTillNextAttack = enemy.attackInterval;
 
         enemy.chaseDirection = GetDirectionToPlayer();
-        if (enemy.rigidBody.bodyType == RigidbodyType2D.Dynamic)
-        {
-            enemy.rigidBody.velocity = Vector2.zero;
-            enemy.rigidBody.bodyType = RigidbodyType2D.Static;
-        }
+ 
         GameObject projectile = GameObject.Instantiate(enemy.projectilePrefab, enemy.transform.position, Quaternion.identity);
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
         projectileRb.velocity = enemy.chaseDirection * 5;

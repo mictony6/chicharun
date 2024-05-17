@@ -51,11 +51,21 @@ public class EnemyChase : EnemyState
         float distanceFromPlayer = (enemy.transform.position - enemy.targetPlayer.transform.position).sqrMagnitude;
         if(distanceFromPlayer < 20.0f && enemy.canAttack)
         {
+
             enemy.TransitionTo(EnemyStateTypes.Attack);
-            return;
         }
-        enemy.chaseDirection = GetDirectionToPlayer();
-        enemy.rigidBody.velocity = enemy.chaseDirection * (enemy.speed * Time.deltaTime);
+        else if(distanceFromPlayer < 20.0f && !enemy.canAttack)
+        {
+            enemy.chaseDirection = Vector2.zero;
+            enemy.rigidBody.bodyType = RigidbodyType2D.Static;
+        }
+        else
+        {
+            enemy.rigidBody.bodyType = RigidbodyType2D.Dynamic;
+            enemy.chaseDirection = GetDirectionToPlayer();
+            enemy.rigidBody.velocity = enemy.chaseDirection * (enemy.speed * Time.deltaTime);
+
+        }
 
     }
 
@@ -68,10 +78,7 @@ public class EnemyChase : EnemyState
             {
                 enemy.TransitionTo(EnemyStateTypes.Attack);
             }
-            else
-            {
-                enemy.chaseDirection = Vector2.zero;
-            }
+  
         }
  
         enemy.chaseDirection = GetDirectionToPlayer();
