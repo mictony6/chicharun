@@ -194,7 +194,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2558541802473673151, guid: 77faafc4b1eadd9448cdf534be7979cc, type: 3}
   attackInterval: 3
   timeTillNextAttack: 5
-  canAttack: 1
+  canAttack: 0
   speed: 50
 --- !u!95 &2142039451515259887
 Animator:

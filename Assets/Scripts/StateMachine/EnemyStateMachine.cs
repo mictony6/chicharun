@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 
 public enum EnemyType
@@ -58,12 +59,25 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
         states[EnemyStateTypes.Attack]= new EnemyAttack(this);
         states[EnemyStateTypes.Death] = new EnemyDeath(this);
         states[EnemyStateTypes.Idle] = new EnemyIdle(this);
-
-
     }
 
     void Update()
     {
+        if (targetPlayer == null)
+        {
+            TransitionTo(EnemyStateTypes.Death);
+            return;
+        }
+
+        if (timeTillNextAttack <= 0 )
+        {
+            canAttack = true;
+            timeTillNextAttack = attackInterval;
+        }
+        else
+        {
+            timeTillNextAttack -= Time.deltaTime;
+        }
 
         if (combatBehavior.currentHealth <= 0)
         {

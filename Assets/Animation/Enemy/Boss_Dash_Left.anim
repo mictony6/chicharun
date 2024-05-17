@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Melee_Idle
+  m_Name: Boss_Dash_Left
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -842192069, guid: 5a451b50a2a61ae40979bad3546c9448, type: 3}
-    - time: 0.25
-      value: {fileID: -1570844461, guid: 5a451b50a2a61ae40979bad3546c9448, type: 3}
-    - time: 0.5
-      value: {fileID: -2062748228, guid: 5a451b50a2a61ae40979bad3546c9448, type: 3}
+      value: {fileID: -1157970196, guid: a7a5c06c9bb36584887f93f12f086b2f, type: 3}
+    - time: 0.083333336
+      value: {fileID: 840869353, guid: a7a5c06c9bb36584887f93f12f086b2f, type: 3}
     - time: 0.75
-      value: {fileID: -1106869813, guid: 5a451b50a2a61ae40979bad3546c9448, type: 3}
+      value: {fileID: 908598371, guid: a7a5c06c9bb36584887f93f12f086b2f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,10 +48,9 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -842192069, guid: 5a451b50a2a61ae40979bad3546c9448, type: 3}
-    - {fileID: -1570844461, guid: 5a451b50a2a61ae40979bad3546c9448, type: 3}
-    - {fileID: -2062748228, guid: 5a451b50a2a61ae40979bad3546c9448, type: 3}
-    - {fileID: -1106869813, guid: 5a451b50a2a61ae40979bad3546c9448, type: 3}
+    - {fileID: -1157970196, guid: a7a5c06c9bb36584887f93f12f086b2f, type: 3}
+    - {fileID: 840869353, guid: a7a5c06c9bb36584887f93f12f086b2f, type: 3}
+    - {fileID: 908598371, guid: a7a5c06c9bb36584887f93f12f086b2f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -64,7 +61,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
