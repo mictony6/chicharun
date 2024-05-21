@@ -52,7 +52,7 @@ public class EnemyChase : EnemyState
     private void BossChase()
     {
         float distanceFromPlayer = (enemy.transform.position - enemy.targetPlayer.transform.position).sqrMagnitude;
-        if (distanceFromPlayer < 10.0f)
+        if (distanceFromPlayer < 20.0f)
         {
             if (enemy.canAttack)
             {

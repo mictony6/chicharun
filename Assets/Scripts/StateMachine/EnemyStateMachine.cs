@@ -84,6 +84,7 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
             timeTillNextAttack -= Time.deltaTime;
         }
 
+
         if (combatBehavior.currentHealth <= 0)
         {
             TransitionTo(EnemyStateTypes.Death);

@@ -21,7 +21,10 @@ public class EnemyAttack : EnemyState
     {
         enemy.rigidBody.bodyType = RigidbodyType2D.Dynamic;
         enemy.canAttack = false;
-        enemy.animator.SetBool("isAttack",false);
+        if(enemy.enemyType == EnemyType.Boss)
+        {
+            enemy.animator.SetBool("isAttack",false);
+        }
 
 
     }
