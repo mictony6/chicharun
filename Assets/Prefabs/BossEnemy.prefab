@@ -192,7 +192,7 @@ MonoBehaviour:
   targetLocation: {x: 0, y: 0}
   chaseDirection: {x: 0, y: 0}
   deathParticle: {fileID: 1338728441980871077, guid: eb1c33740e9efde479ef267ce9fb3165, type: 3}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 2558541802473673151, guid: 77faafc4b1eadd9448cdf534be7979cc, type: 3}
   attackInterval: 2
   timeTillNextAttack: 1
   canAttack: 0

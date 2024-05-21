@@ -40,7 +40,7 @@ public class EnemyAttack : EnemyState
                 RangedAttack();
                 break;
             case EnemyType.Boss:
-                BossAttack();
+                BossAttack2();
                 break;
         }
 
@@ -50,7 +50,7 @@ public class EnemyAttack : EnemyState
 
     }
 
-    private async void BossAttack()
+    private async void BossAttack1()
     {
         enemy.animator.SetBool("isAttack", true);
 
@@ -65,8 +65,49 @@ public class EnemyAttack : EnemyState
         enemy.TransitionTo(EnemyStateTypes.Chase);
     }
 
+    private async void BossAttack2()
+    {
+        if (!enemy.canAttack) return;
+
+        enemy.animator.SetFloat("xDir", enemy.chaseDirection.x);
+
+        int numProjectiles = 10;
+        float angleStep = 360f / numProjectiles;
+        float angle = 0f;
+        for (int i = 0; i < numProjectiles; i++)
+        {
+            float projectileDirX = Mathf.Cos((angle * Mathf.PI) / 180f);
+            float projectileDirY = Mathf.Sin((angle * Mathf.PI) / 180f);
+
+            Vector3 projectileVector = new Vector3(projectileDirX, projectileDirY, 0);
+            Vector3 projectileMoveDirection = (projectileVector).normalized * 10;
+            Vector3 spawnPosition = enemy.transform.position + projectileVector.normalized * 2f;
+
+            GameObject projectile = GameObject.Instantiate(enemy.projectilePrefab, spawnPosition, Quaternion.identity);
+            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileMoveDirection.x, projectileMoveDirection.y);
+
+            angle += angleStep;
+        }
+
+        if (enemy != null)
+        {
+            enemy.rigidBody.velocity = (enemy.chaseDirection * (enemy.speed * Time.deltaTime)) * 3;
+        }
+        enemy.canAttack = false;
+        enemy.timeTillNextAttack = enemy.attackInterval;
+
+
+
+        await WaitSeconds(1);
+
+
+        enemy.TransitionTo(EnemyStateTypes.Chase);
+    }
+
     private async void MeleeAttack()
     {
+        if (!enemy.canAttack) return;
+
         if (enemy != null)
         {
             enemy.rigidBody.velocity = (enemy.chaseDirection * (enemy.speed * Time.deltaTime)) * 3;
