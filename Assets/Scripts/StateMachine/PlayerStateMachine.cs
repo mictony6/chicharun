@@ -22,9 +22,6 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
 
     [SerializeField] public GameObject gameOverUI;
 
-
-
-
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -41,12 +38,10 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
 
     void InitStates()
     {
-
         states[StateTypes.Move] = new MovingState(this);
         states[StateTypes.Attack] = new AttackState(this);
         states[StateTypes.Idle] = new IdleState(this);
         states[StateTypes.Death] = new DeathState(this);
-
     }
 
     private void Update()
@@ -66,9 +61,6 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
         {
             TransitionTo(StateTypes.Death);
         }
-
-
-
     }
 
 
@@ -82,8 +74,6 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
             _prevState = _currentState;
             _currentState = (StateTypes) _nextState;
             states[_currentState].OnEnter();
-
-
 
             switch (_prevState)
             {
