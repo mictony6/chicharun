@@ -19,6 +19,6 @@ public class BulletParticleFX : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject.Instantiate(particle, transform.position, Quaternion.identity);
+       GameObject.Instantiate(particle, transform.position, Quaternion.identity);
     }
 }

@@ -19,57 +19,18 @@ public class EnemyAttack : EnemyState
 
     public override void OnExit()
     {
+        enemy.rigidBody.bodyType = RigidbodyType2D.Dynamic;
+        enemy.canAttack = false;
+        if(enemy.enemyType == EnemyType.Boss)
+        {
+            enemy.animator.SetBool("isAttack",false);
+        }
+
 
     }
 
     public override void OnUpdate()
     {
-        if (enemy.targetPlayer == null) {
-            enemy.TransitionTo(EnemyStateTypes.Death);
-            return;
-        }
-
-        if (enemy.timeTillNextAttack <= 0)
-        {
-            enemy.canAttack = true;
-            enemy.timeTillNextAttack = enemy.attackInterval;
-        }
-        else
-        {
-            enemy.timeTillNextAttack -= Time.deltaTime;
-        }
-
-
-        if (enemy.targetPlayer == null)
-        {
-            enemy.TransitionTo(EnemyStateTypes.Death);
-        }
-
-        float distanceFromPlayer = (enemy.transform.position - enemy.targetPlayer.transform.position).sqrMagnitude;
-        
-
-
-        switch (enemy.enemyType)
-        {
-            case EnemyType.Melee:
-                if (distanceFromPlayer >= 10)
-                {
-                    enemy.TransitionTo(EnemyStateTypes.Chase);
-                    enemy.rigidBody.bodyType = RigidbodyType2D.Dynamic;
-
-                }
-                break;
-            case EnemyType.Ranged:
-                if (distanceFromPlayer >= 20)
-                {
-                    enemy.TransitionTo(EnemyStateTypes.Chase);
-
-                }
-                break;
-        }
-
-
-        if (!enemy.canAttack) { return; }
         switch (enemy.enemyType)
         {
             case EnemyType.Melee:
@@ -78,6 +39,9 @@ public class EnemyAttack : EnemyState
             case EnemyType.Ranged:
                 RangedAttack();
                 break;
+            case EnemyType.Boss:
+                BossAttack2();
+                break;
         }
 
 
@@ -86,34 +50,88 @@ public class EnemyAttack : EnemyState
 
     }
 
-    private void MeleeAttack()
+    private async void BossAttack1()
     {
+        enemy.animator.SetBool("isAttack", true);
+
+        enemy.animator.SetFloat("xDir", enemy.chaseDirection.x);
         if (enemy != null)
         {
-            enemy.chaseDirection = GetDirectionToPlayer();
             enemy.rigidBody.velocity = (enemy.chaseDirection * (enemy.speed * Time.deltaTime)) * 3;
         }
         enemy.canAttack = false;
+        enemy.timeTillNextAttack = enemy.attackInterval;
+        await WaitSeconds(1);
+        enemy.TransitionTo(EnemyStateTypes.Chase);
+    }
+
+    private async void BossAttack2()
+    {
+        if (!enemy.canAttack) return;
+
+        enemy.animator.SetFloat("xDir", enemy.chaseDirection.x);
+
+        int numProjectiles = 10;
+        float angleStep = 360f / numProjectiles;
+        float angle = 0f;
+        for (int i = 0; i < numProjectiles; i++)
+        {
+            float projectileDirX = Mathf.Cos((angle * Mathf.PI) / 180f);
+            float projectileDirY = Mathf.Sin((angle * Mathf.PI) / 180f);
+
+            Vector3 projectileVector = new Vector3(projectileDirX, projectileDirY, 0);
+            Vector3 projectileMoveDirection = (projectileVector).normalized * 10;
+            Vector3 spawnPosition = enemy.transform.position + projectileVector.normalized * 2f;
+
+            GameObject projectile = GameObject.Instantiate(enemy.projectilePrefab, spawnPosition, Quaternion.identity);
+            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileMoveDirection.x, projectileMoveDirection.y);
+
+            angle += angleStep;
+        }
+
+        if (enemy != null)
+        {
+            enemy.rigidBody.velocity = (enemy.chaseDirection * (enemy.speed * Time.deltaTime)) * 3;
+        }
+        enemy.canAttack = false;
+        enemy.timeTillNextAttack = enemy.attackInterval;
+
+
+
+        await WaitSeconds(1);
+
+
+        enemy.TransitionTo(EnemyStateTypes.Chase);
+    }
+
+    private async void MeleeAttack()
+    {
+        if (!enemy.canAttack) return;
+
+        if (enemy != null)
+        {
+            enemy.rigidBody.velocity = (enemy.chaseDirection * (enemy.speed * Time.deltaTime)) * 3;
+        }
+        enemy.canAttack = false;
+        enemy.timeTillNextAttack = enemy.attackInterval;
+        await WaitSeconds(1);
+        enemy.TransitionTo(EnemyStateTypes.Chase);
+
 
 
     }
     private void RangedAttack()
     {
         enemy.canAttack = false;
+        enemy.timeTillNextAttack = enemy.attackInterval;
+
         enemy.chaseDirection = GetDirectionToPlayer();
-        if (enemy.rigidBody.bodyType == RigidbodyType2D.Dynamic)
-        {
-            enemy.rigidBody.velocity = Vector2.zero;
-        }
-        enemy.rigidBody.bodyType = RigidbodyType2D.Static;
+ 
         GameObject projectile = GameObject.Instantiate(enemy.projectilePrefab, enemy.transform.position, Quaternion.identity);
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
         projectileRb.velocity = enemy.chaseDirection * 5;
         projectile.GetComponent<DamageOnHit>().SetDamage(enemy.combatBehavior.damage);
-
-
-
-
+        enemy.TransitionTo(EnemyStateTypes.Chase);
 
 
 

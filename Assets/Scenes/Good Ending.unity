@@ -299,10 +299,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163671725}
-  - component: {fileID: 163671726}
   - component: {fileID: 163671727}
+  - component: {fileID: 163671728}
   m_Layer: 0
-  m_Name: ToStartScene
+  m_Name: ToGameOverScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,18 +323,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &163671726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163671724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7191105f9cb28c4ea43bb49ab93e9ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &163671727
 Animator:
   serializedVersion: 5
@@ -356,6 +344,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &163671728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163671724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3a635dc2a3674458da7820eb80558a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &237636828
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &237636829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,9 +395,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Gifted with mystical tools, Chicha must defeat multiple menacing creatures
-    and avoid a grim end. The choice lies in her journey of escape, redemption, and
-    destiny, with ten minutes to seal her fate.
+  m_text: Until the next battle...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f107a3c5997e34e49831cddc2c061e31, type: 2}
   m_sharedMaterial: {fileID: 9183874888339502236, guid: f107a3c5997e34e49831cddc2c061e31, type: 2}
@@ -650,9 +648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chicha, an innocent yet delicious-looking piglet, discovered that she would
-    become the main dish of the upcoming town fiesta. Fearing for what was to come,
-    Chicha ran for her life.
+  m_text: 'Finally, the end has come! Chicha has won her battle. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f107a3c5997e34e49831cddc2c061e31, type: 2}
   m_sharedMaterial: {fileID: 9183874888339502236, guid: f107a3c5997e34e49831cddc2c061e31, type: 2}
@@ -992,7 +988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2008546865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1013,10 +1009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Misfortune struck as she was kidnapped by a sinister cult, who performed
-    experiments on poor Chicha in an attempt to turn her into a cyborg. Thankfully,
-    she escaped the villains' grasp before the transformation was complete. But Chicha
-    could not stop running as the enemies were hot on her tail.
+  m_text: Good work, ka-LecHunk!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f107a3c5997e34e49831cddc2c061e31, type: 2}
   m_sharedMaterial: {fileID: 9183874888339502236, guid: f107a3c5997e34e49831cddc2c061e31, type: 2}

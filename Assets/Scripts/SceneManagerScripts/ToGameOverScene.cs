@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ToMainScene : MonoBehaviour
+public class ToGameOverScene : MonoBehaviour
 {
     // Update is called once per frame
     void OnEnable()
     {
-        SceneManager.LoadScene("Main", LoadSceneMode.Single);
+        // Go to the game over scene 
+        SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
     }
 }

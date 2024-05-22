@@ -11,14 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float rangedSpawnChance;
     private float timeToNextSpawn;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        meleeSpawnChance = 0.5f;
-        rangedSpawnChance = 0.25f;
-        spawnRate = 1.0f;
-        
-    }
+
 
     // Update is called once per frame
     void Update()
