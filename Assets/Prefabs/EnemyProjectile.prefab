@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1787788932611613915}
   - component: {fileID: 2126774116741760164}
   - component: {fileID: 7496435967778190678}
-  - component: {fileID: -3275203819916061042}
   - component: {fileID: 5932079468882183296}
   - component: {fileID: 7171721116742086558}
   m_Layer: 13
@@ -164,19 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c00f8aac7fa5fc4fbefb7a8580852df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3275203819916061042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2558541802473673151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f16eb40a16cb67342ad5103c8c341e4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particle: {fileID: 1338728441980871077, guid: eb1c33740e9efde479ef267ce9fb3165, type: 3}
 --- !u!96 &5932079468882183296
 TrailRenderer:
   serializedVersion: 3
@@ -303,3 +289,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagToDamage: Player
+  particle: {fileID: 1338728441980871077, guid: eb1c33740e9efde479ef267ce9fb3165, type: 3}
