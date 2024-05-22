@@ -37,6 +37,6 @@ public class WeaponBehavior : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = transform.right * 10;
-        bullet.GetComponent<DamageOnHit>().SetDamage(playerCb.damage);
+        bullet.GetComponent<DamageOnHit>().SetDamage(playerCb.GetDamage());
     }
 }

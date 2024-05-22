@@ -68,26 +68,9 @@ public class EnemyAttack : EnemyState
     private async void BossAttack2()
     {
         if (!enemy.canAttack) return;
-
+        enemy.animator.SetBool("isAttack", true);
         enemy.animator.SetFloat("xDir", enemy.chaseDirection.x);
 
-        int numProjectiles = 10;
-        float angleStep = 360f / numProjectiles;
-        float angle = 0f;
-        for (int i = 0; i < numProjectiles; i++)
-        {
-            float projectileDirX = Mathf.Cos((angle * Mathf.PI) / 180f);
-            float projectileDirY = Mathf.Sin((angle * Mathf.PI) / 180f);
-
-            Vector3 projectileVector = new Vector3(projectileDirX, projectileDirY, 0);
-            Vector3 projectileMoveDirection = (projectileVector).normalized * 10;
-            Vector3 spawnPosition = enemy.transform.position + projectileVector.normalized * 2f;
-
-            GameObject projectile = GameObject.Instantiate(enemy.projectilePrefab, spawnPosition, Quaternion.identity);
-            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileMoveDirection.x, projectileMoveDirection.y);
-
-            angle += angleStep;
-        }
 
         if (enemy != null)
         {
@@ -99,7 +82,24 @@ public class EnemyAttack : EnemyState
 
 
         await WaitSeconds(1);
+        int numProjectiles = 5;
+        float angleStep = 360f / numProjectiles;
+        float angle = 0f;
+        for (int i = 0; i < numProjectiles; i++)
+        {
+            float projectileDirX = Mathf.Cos((angle * Mathf.PI) / 180f);
+            float projectileDirY = Mathf.Sin((angle * Mathf.PI) / 180f);
 
+            Vector3 projectileVector = new Vector3(projectileDirX, projectileDirY, 0);
+            Vector3 projectileMoveDirection = (projectileVector).normalized * 5;
+            Vector3 spawnPosition = enemy.transform.position;
+
+            GameObject projectile = GameObject.Instantiate(enemy.projectilePrefab, spawnPosition, Quaternion.identity);
+            projectile.GetComponent<DamageOnHit>().SetDamage(enemy.combatBehavior.GetDamage());
+            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileMoveDirection.x, projectileMoveDirection.y);
+
+            angle += angleStep;
+        }
 
         enemy.TransitionTo(EnemyStateTypes.Chase);
     }
@@ -130,7 +130,7 @@ public class EnemyAttack : EnemyState
         GameObject projectile = GameObject.Instantiate(enemy.projectilePrefab, enemy.transform.position, Quaternion.identity);
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
         projectileRb.velocity = enemy.chaseDirection * 5;
-        projectile.GetComponent<DamageOnHit>().SetDamage(enemy.combatBehavior.damage);
+        projectile.GetComponent<DamageOnHit>().SetDamage(enemy.combatBehavior.GetDamage());
         enemy.TransitionTo(EnemyStateTypes.Chase);
 
 

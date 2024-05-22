@@ -10,10 +10,13 @@ public class CombatBehavior : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public int damage;
-    public int defense;
+    private int defense = 0;
+
     public int exp;
     public float nextLevelThreshold;
     public int expDrop;
+    public float damageModifier = 1;
+    public float defenseModifier = 1;
 
     void Start()
     {
@@ -40,11 +43,22 @@ public class CombatBehavior : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount - defense;
+        if (defense > 0)
+        {
+            // do something effect chuchu
+            defense -= 1;
+            return;
+        }
+        currentHealth -= amount;
         if (currentHealth < 0)
         {
             currentHealth = 0;
         }
+    }
+
+    public int GetDamage()
+    {
+        return (int)Mathf.Ceil(damage * damageModifier);
     }
 
     public void PrintStats()
@@ -63,8 +77,23 @@ public class CombatBehavior : MonoBehaviour
         {
             level += 1;
             nextLevelThreshold *=2;
+            GameEvents.current.LevelUp();
         }
     }
+
+
+    public void IncreaseDamage()
+    {
+        damageModifier += 0.5f;
+    }
+
+    public void IncreaseDefense()
+    {
+        defense += 1;
+    }
+
+
+
 
 
 
