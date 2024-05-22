@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -47,6 +48,7 @@ public class CombatBehavior : MonoBehaviour
         {
             // do something effect chuchu
             defense -= 1;
+            GameEvents.current.PowerUpUpdate.Invoke(PowerUpType.DefenseUp);
             return;
         }
         currentHealth -= amount;
@@ -92,9 +94,8 @@ public class CombatBehavior : MonoBehaviour
         defense += 1;
     }
 
-
-
-
-
-
+    public float GetDefense()
+    {
+        return defense;
+    }
 }
