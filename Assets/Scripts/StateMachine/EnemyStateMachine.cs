@@ -122,8 +122,4 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
     {
         _nextState = _prevState;
     }
-
-
-
-
 }
