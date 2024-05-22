@@ -202,9 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5caffad51d66e47986fd38587c0576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCb: {fileID: 0}
   powerUpType: 0
-  playerController: {fileID: 0}
 --- !u!114 &22266021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,9 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5caffad51d66e47986fd38587c0576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCb: {fileID: 0}
   powerUpType: 0
-  playerController: {fileID: 0}
 --- !u!1 &27565260
 GameObject:
   m_ObjectHideFlags: 0
@@ -18337,7 +18333,7 @@ MonoBehaviour:
   meleeEnemyPrefab: {fileID: 422999275901736758, guid: 2c0f5eb5c97e25e4f94d05834421ef3a, type: 3}
   rangedEnemyPrefab: {fileID: 422999275901736758, guid: 03d9504db05817541b662c0771f24599, type: 3}
   spawnRate: 1
-  meleeSpawnChance: 0.5
+  meleeSpawnChance: 1
   rangedSpawnChance: 0.1
 --- !u!4 &1218735822
 Transform:
@@ -19588,6 +19584,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb38b979f6ef44d4f8116d0cd7738fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1089723424}
+        m_TargetAssemblyTypeName: CombatBehavior, Assembly-CSharp
+        m_MethodName: collectExp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &2032522969
 Transform:
   m_ObjectHideFlags: 0
@@ -20086,18 +20097,6 @@ PrefabInstance:
     - target: {fileID: 1046579338651268584, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195768288879650774, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
-      propertyPath: damage
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195768288879650774, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
-      propertyPath: maxHealth
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195768288879650774, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
-      propertyPath: nextLevelThreshold
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5366874787692057925, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
       propertyPath: m_LocalPosition.x
