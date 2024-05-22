@@ -135,6 +135,7 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   weaponBehavior: {fileID: 0}
   combatBehavior: {fileID: 0}
+  gameOverUI: {fileID: 0}
 --- !u!114 &1195768288879650774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,10 +151,13 @@ MonoBehaviour:
   level: 1
   maxHealth: 3
   currentHealth: 0
-  damage: 1
+  damage: 2
   defense: 0
   exp: 0
-  nextLevelThreshold: 0
+  nextLevelThreshold: 100
+  expDrop: 0
+  damageModifier: 1
+  defenseModifier: 0
 --- !u!95 &2609152801628452449
 Animator:
   serializedVersion: 5
@@ -189,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
   lastDirection: {x: 0, y: 0}
+  speedModifier: 1
 --- !u!70 &3657333809509825545
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

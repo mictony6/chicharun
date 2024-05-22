@@ -11,6 +11,7 @@ public class XPBarSystem : MonoBehaviour
     private float lastLevel = 0;
 
 
+
     private void Start()
     {
         xpFill.fillAmount = 0;
@@ -36,5 +37,6 @@ public class XPBarSystem : MonoBehaviour
 
         }
     }
+
 
 }

@@ -95,7 +95,7 @@ public class EnemyAttack : EnemyState
             Vector3 spawnPosition = enemy.transform.position;
 
             GameObject projectile = GameObject.Instantiate(enemy.projectilePrefab, spawnPosition, Quaternion.identity);
-            projectile.GetComponent<DamageOnHit>().SetDamage(enemy.combatBehavior.damage);
+            projectile.GetComponent<DamageOnHit>().SetDamage(enemy.combatBehavior.GetDamage());
             projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileMoveDirection.x, projectileMoveDirection.y);
 
             angle += angleStep;
@@ -130,7 +130,7 @@ public class EnemyAttack : EnemyState
         GameObject projectile = GameObject.Instantiate(enemy.projectilePrefab, enemy.transform.position, Quaternion.identity);
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
         projectileRb.velocity = enemy.chaseDirection * 5;
-        projectile.GetComponent<DamageOnHit>().SetDamage(enemy.combatBehavior.damage);
+        projectile.GetComponent<DamageOnHit>().SetDamage(enemy.combatBehavior.GetDamage());
         enemy.TransitionTo(EnemyStateTypes.Chase);
 
 

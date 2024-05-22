@@ -26,7 +26,7 @@ public class MeleeAttack : MonoBehaviour
             CombatBehavior playerCb = collision.gameObject.GetComponentInParent<CombatBehavior>();
             if (playerCb != null)
             {
-                playerCb.TakeDamage(enemy.combatBehavior.damage);
+                playerCb.TakeDamage(enemy.combatBehavior.GetDamage());
             }
             enemy.TransitionTo(EnemyStateTypes.Death);
         }
