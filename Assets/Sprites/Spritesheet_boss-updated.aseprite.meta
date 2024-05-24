@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Spritesheet_boss-updated
     originalName: 
-    pivot: {x: 0.50043595, y: 0}
+    pivot: {x: 0.5004351, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1147
-      height: 381
+      width: 1149
+      height: 382
     spriteID: fb3460bbce1ad734aa99350600013fc0
     spriteBone: []
     spriteOutline: []
@@ -154,10 +154,10 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 2
+        x: 1
         y: 0
-        width: 1147
-        height: 381
+        width: 1149
+        height: 382
       spriteId: fb3460bbce1ad734aa99350600013fc0
     linkedCells: []
     parentIndex: -1
