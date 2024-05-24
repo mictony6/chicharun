@@ -26,5 +26,8 @@ public class GameEvents : MonoBehaviour
 
     public UnityEvent<PowerUpType> PowerUpUpdate;
 
+    public UnityEvent AttackLand;
+    public UnityEvent PauseGame;
 
+    public UnityEvent ResumeGame;
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public enum PowerUpType
 {
@@ -16,6 +17,7 @@ public class PowerUpDetails : MonoBehaviour, IPointerClickHandler
     PlayerController playerController;
     [SerializeField] PowerUpType powerUpType;
     GameObject powerUpUI;
+    private Image overlay;
 
     void Start()
     {
@@ -49,6 +51,9 @@ public class PowerUpDetails : MonoBehaviour, IPointerClickHandler
         Apply();
         GameEvents.current.PowerUpUpdate.Invoke(powerUpType);
         powerUpUI.SetActive(false);
-        Time.timeScale = 1.0f;
+        GameEvents.current.ResumeGame.Invoke();
+
     }
+
+
 }

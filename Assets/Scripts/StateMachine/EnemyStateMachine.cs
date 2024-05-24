@@ -56,6 +56,14 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
 
         InitStates();
         _currentState =  EnemyStateTypes.Chase;
+
+        GameEvents.current.PauseGame.AddListener(PauseMachine);
+        GameEvents.current.ResumeGame.AddListener(TransitionToPrev);
+    }
+
+    private void PauseMachine()
+    {
+        TransitionTo(EnemyStateTypes.Pause);
     }
 
     void InitStates()
@@ -64,6 +72,8 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
         states[EnemyStateTypes.Attack]= new EnemyAttack(this);
         states[EnemyStateTypes.Death] = new EnemyDeath(this);
         states[EnemyStateTypes.Idle] = new EnemyIdle(this);
+        states[EnemyStateTypes.Pause] = new EnemyPause(this);
+
     }
 
     void Update()

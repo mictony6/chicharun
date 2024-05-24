@@ -16,6 +16,6 @@ public class PowerUpUI : MonoBehaviour
     private void OnLevelUp()
     {
         gameObject.SetActive(true);
-        Time.timeScale =0;
+        GameEvents.current.PauseGame.Invoke();
     }
 }

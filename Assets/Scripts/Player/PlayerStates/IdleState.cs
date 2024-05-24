@@ -18,6 +18,13 @@ public class IdleState :  PlayerState
 
     public override void OnUpdate()
     {
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            player.TransitionTo(StateTypes.Attack);
+        }
+
+
         if (player.playerController.direction.x != 0 || player.playerController.direction.y != 0)
         {
             player.TransitionTo(StateTypes.Move);
