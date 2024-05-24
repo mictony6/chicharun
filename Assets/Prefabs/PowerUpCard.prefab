@@ -88,6 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5caffad51d66e47986fd38587c0576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCb: {fileID: 1195768288879650774, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
   powerUpType: 0
-  playerController: {fileID: 1812191524996871205, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}

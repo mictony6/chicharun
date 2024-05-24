@@ -3,7 +3,8 @@ public enum StateTypes
     Attack,
     Move,
     Idle,
-    Death
+    Death,
+    Pause
 }
 
 public enum EnemyStateTypes
@@ -11,5 +12,6 @@ public enum EnemyStateTypes
     Chase,
     Attack,
     Death,
-    Idle
+    Idle,
+    Pause
 }

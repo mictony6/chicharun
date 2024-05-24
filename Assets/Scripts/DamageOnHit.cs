@@ -22,11 +22,13 @@ public class DamageOnHit : MonoBehaviour
     {
         if (collision.CompareTag(tagToDamage))
         {
+            GameEvents.current.AttackLand.Invoke();
             Debug.Log(collision.gameObject.name);
             Instantiate(particle, transform.position, Quaternion.identity);
             CombatBehavior targetCb = collision.gameObject.GetComponentInParent<CombatBehavior>();
             targetCb.TakeDamage(damage);
             Destroy(gameObject);
+
         } 
     }
 

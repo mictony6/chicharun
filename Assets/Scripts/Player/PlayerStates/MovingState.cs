@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovingState :  PlayerState
@@ -8,6 +9,7 @@ public class MovingState :  PlayerState
 
     public override void OnEnter()
     {
+
     }
 
     public override void OnExit()
@@ -16,6 +18,7 @@ public class MovingState :  PlayerState
 
     public override void OnUpdate()
     {
+
         if (player.playerController.direction.x == 0 && player.playerController.direction.y == 0)
         {
             player.TransitionTo(StateTypes.Idle);

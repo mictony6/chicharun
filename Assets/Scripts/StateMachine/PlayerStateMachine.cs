@@ -33,7 +33,15 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
 
         InitStates();
 
-        _currentState = StateTypes.Idle; ;
+        _currentState = StateTypes.Idle;
+
+        GameEvents.current.PauseGame.AddListener(PauseMachine);
+        GameEvents.current.ResumeGame.AddListener(TransitionToPrev);
+    }
+
+    private void PauseMachine()
+    {
+        TransitionTo(StateTypes.Pause);
     }
 
     void InitStates()
@@ -42,15 +50,17 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
         states[StateTypes.Attack] = new AttackState(this);
         states[StateTypes.Idle] = new IdleState(this);
         states[StateTypes.Death] = new DeathState(this);
+        states[StateTypes.Pause] = new PausedState(this);
+
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            _nextState = StateTypes.Attack;
-        }
 
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0) && _currentState == StateTypes.Move)
+        {
+            TransitionTo(StateTypes.Attack);
+        }
 
         animator.SetFloat("xDir", playerController.direction.x);
         animator.SetFloat("yDir", playerController.direction.y);
@@ -67,6 +77,8 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
     // Update is called once per frame
     void FixedUpdate()
     {
+
+
         if (_nextState != null  && _nextState != _currentState)
         {
 
