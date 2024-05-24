@@ -48288,6 +48288,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c85109f33ea53409a7fad8a0a1c115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1089723425 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5366874787692057925, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
+  m_PrefabInstance: {fileID: 7725242734378304553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1101467356
 GameObject:
   m_ObjectHideFlags: 0
@@ -48731,6 +48736,8 @@ MonoBehaviour:
   spawnRate: 1
   meleeSpawnChance: 1
   rangedSpawnChance: 0.1
+  playerTransform: {fileID: 1089723425}
+  spawnDistance: 10
 --- !u!4 &1218735822
 Transform:
   m_ObjectHideFlags: 0
@@ -97793,6 +97800,10 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 896368016}
+    - target: {fileID: 6463908150920870094, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
+      propertyPath: tileMap
+      value: 
+      objectReference: {fileID: 113518562}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
