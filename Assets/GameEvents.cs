@@ -24,4 +24,7 @@ public class GameEvents : MonoBehaviour
 
     public UnityEvent<int> EnemyDeath;
 
+    public UnityEvent<PowerUpType> PowerUpUpdate;
+
+
 }

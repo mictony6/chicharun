@@ -47,6 +47,7 @@ public class PowerUpDetails : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Apply();
+        GameEvents.current.PowerUpUpdate.Invoke(powerUpType);
         powerUpUI.SetActive(false);
         Time.timeScale = 1.0f;
     }
