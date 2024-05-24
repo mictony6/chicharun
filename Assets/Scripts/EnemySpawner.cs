@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
     void IncreaseDifficulty()
     {
         Debug.Log("Difficulty Increased");
-        spawnRate *= 1.5f;
+        spawnRate *= 0.95f;
 
 
     }

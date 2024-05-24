@@ -9,7 +9,8 @@ public class EnemyAttack : EnemyState
     {
     }
 
-    public override void OnEnter(){
+    public override void OnEnter()
+    {
 
 
 
@@ -21,9 +22,9 @@ public class EnemyAttack : EnemyState
     {
         enemy.rigidBody.bodyType = RigidbodyType2D.Dynamic;
         enemy.canAttack = false;
-        if(enemy.enemyType == EnemyType.Boss)
+        if (enemy.enemyType == EnemyType.Boss)
         {
-            enemy.animator.SetBool("isAttack",false);
+            enemy.animator.SetBool("isAttack", false);
         }
 
 
@@ -110,7 +111,7 @@ public class EnemyAttack : EnemyState
 
         if (enemy != null)
         {
-            enemy.rigidBody.velocity = (enemy.chaseDirection * (enemy.speed * Time.deltaTime)) * 3;
+            enemy.rigidBody.AddForce(enemy.chaseDirection * 3, ForceMode2D.Impulse);
         }
         enemy.canAttack = false;
         enemy.timeTillNextAttack = enemy.attackInterval;
@@ -126,7 +127,7 @@ public class EnemyAttack : EnemyState
         enemy.timeTillNextAttack = enemy.attackInterval;
 
         enemy.chaseDirection = GetDirectionToPlayer();
- 
+
         GameObject projectile = GameObject.Instantiate(enemy.projectilePrefab, enemy.transform.position, Quaternion.identity);
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
         projectileRb.velocity = enemy.chaseDirection * 5;
