@@ -32,15 +32,14 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
     [SerializeField] public GameObject deathParticle;
     [SerializeField] public GameObject projectilePrefab;
 
-    // timer stuff
-    public float attackInterval = 1.0f;
-    public float timeTillNextAttack = 1.0f;
-    public bool canAttack = false;
-
-
-
     public Rigidbody2D rigidBody { get; internal set; }
-    public int speed = 75; 
+    public int speed = 75;
+
+    public bool canAttack
+    {
+        get { return combatBehavior.canAttack; }
+        set { combatBehavior.canAttack = value; }
+    }
 
     private void Start()
     {
@@ -51,11 +50,11 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
         {
             animator = GetComponent<Animator>();
         }
- 
+
 
 
         InitStates();
-        _currentState =  EnemyStateTypes.Chase;
+        _currentState = EnemyStateTypes.Chase;
 
         GameEvents.current.PauseGame.AddListener(PauseMachine);
         GameEvents.current.ResumeGame.AddListener(TransitionToPrev);
@@ -69,7 +68,7 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
     void InitStates()
     {
         states[EnemyStateTypes.Chase] = new EnemyChase(this);
-        states[EnemyStateTypes.Attack]= new EnemyAttack(this);
+        states[EnemyStateTypes.Attack] = new EnemyAttack(this);
         states[EnemyStateTypes.Death] = new EnemyDeath(this);
         states[EnemyStateTypes.Idle] = new EnemyIdle(this);
         states[EnemyStateTypes.Pause] = new EnemyPause(this);
@@ -82,16 +81,6 @@ public class EnemyStateMachine : MonoBehaviour, BaseStateMachine
         {
             TransitionTo(EnemyStateTypes.Death);
             return;
-        }
-
-        if (timeTillNextAttack <= 0 )
-        {
-            canAttack = true;
-            timeTillNextAttack = attackInterval;
-        }
-        else
-        {
-            timeTillNextAttack -= Time.deltaTime;
         }
 
 

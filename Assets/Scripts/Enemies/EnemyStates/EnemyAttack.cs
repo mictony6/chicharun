@@ -11,7 +11,7 @@ public class EnemyAttack : EnemyState
 
     public override void OnEnter()
     {
-
+        enemy.canAttack = false;
 
 
     }
@@ -61,8 +61,7 @@ public class EnemyAttack : EnemyState
             enemy.rigidBody.velocity = (enemy.chaseDirection * (enemy.speed * Time.deltaTime)) * 3;
         }
         enemy.canAttack = false;
-        enemy.timeTillNextAttack = enemy.attackInterval;
-        await WaitSeconds(1);
+        await WaitSeconds(enemy.combatBehavior.attackInterval);
         enemy.TransitionTo(EnemyStateTypes.Chase);
     }
 
@@ -78,11 +77,11 @@ public class EnemyAttack : EnemyState
             enemy.rigidBody.velocity = (enemy.chaseDirection * (enemy.speed * Time.deltaTime)) * 3;
         }
         enemy.canAttack = false;
-        enemy.timeTillNextAttack = enemy.attackInterval;
 
 
 
-        await WaitSeconds(1);
+        await WaitSeconds(enemy.combatBehavior.attackInterval);
+
         int numProjectiles = 5;
         float angleStep = 360f / numProjectiles;
         float angle = 0f;
@@ -114,8 +113,7 @@ public class EnemyAttack : EnemyState
             enemy.rigidBody.AddForce(enemy.chaseDirection * 3, ForceMode2D.Impulse);
         }
         enemy.canAttack = false;
-        enemy.timeTillNextAttack = enemy.attackInterval;
-        await WaitSeconds(1);
+        await WaitSeconds(enemy.combatBehavior.attackInterval);
         enemy.TransitionTo(EnemyStateTypes.Chase);
 
 
@@ -124,7 +122,6 @@ public class EnemyAttack : EnemyState
     private void RangedAttack()
     {
         enemy.canAttack = false;
-        enemy.timeTillNextAttack = enemy.attackInterval;
 
         enemy.chaseDirection = GetDirectionToPlayer();
 
@@ -137,7 +134,7 @@ public class EnemyAttack : EnemyState
 
 
     }
-    private async Task WaitSeconds(int seconds)
+    private async Task WaitSeconds(float seconds)
     {
         await Task.Delay(TimeSpan.FromSeconds(seconds));
     }

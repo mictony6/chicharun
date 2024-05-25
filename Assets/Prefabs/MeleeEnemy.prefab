@@ -169,10 +169,13 @@ MonoBehaviour:
   maxHealth: 2
   currentHealth: 0
   damage: 1
-  defense: 0
   exp: 0
   nextLevelThreshold: 0
   expDrop: 10
+  damageModifier: 1
+  critChance: 0
+  attackInterval: 0.5
+  canAttack: 1
 --- !u!114 &415522482242976096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
+  animator: {fileID: 0}
   combatBehavior: {fileID: 0}
   targetPlayer: {fileID: 0}
   playerLastLocation: {x: 0, y: 0}
@@ -193,9 +197,6 @@ MonoBehaviour:
   chaseDirection: {x: 0, y: 0}
   deathParticle: {fileID: 1338728441980871077, guid: eb1c33740e9efde479ef267ce9fb3165, type: 3}
   projectilePrefab: {fileID: 0}
-  attackInterval: 2
-  timeTillNextAttack: 1
-  canAttack: 1
   speed: 75
 --- !u!95 &2142039451515259887
 Animator:

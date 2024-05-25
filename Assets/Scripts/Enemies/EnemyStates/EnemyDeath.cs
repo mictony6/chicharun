@@ -11,7 +11,7 @@ public class EnemyDeath : EnemyState
         if (enemy.targetPlayer)
         {
             GameEvents.current.EnemyDeath.Invoke(enemy.combatBehavior.expDrop);
-           // CombatBehavior playerCb = enemy.targetPlayer.GetComponent<CombatBehavior>();
+            // CombatBehavior playerCb = enemy.targetPlayer.GetComponent<CombatBehavior>();
             //playerCb.collectExp(enemy.combatBehavior.expDrop);
         }
         GameObject.Instantiate(enemy.deathParticle, enemy.transform.position, Quaternion.identity);

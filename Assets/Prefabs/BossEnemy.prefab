@@ -165,13 +165,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  maxHealth: 1000
+  maxHealth: 100
   currentHealth: 0
   damage: 1
-  defense: 0
   exp: 0
   nextLevelThreshold: 0
   expDrop: 10
+  damageModifier: 1
+  critChance: 0.75
+  attackInterval: 1
+  canAttack: 1
 --- !u!114 &6118614643978142825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,9 +196,6 @@ MonoBehaviour:
   chaseDirection: {x: 0, y: 0}
   deathParticle: {fileID: 1338728441980871077, guid: eb1c33740e9efde479ef267ce9fb3165, type: 3}
   projectilePrefab: {fileID: 2558541802473673151, guid: 77faafc4b1eadd9448cdf534be7979cc, type: 3}
-  attackInterval: 2
-  timeTillNextAttack: 1
-  canAttack: 0
   speed: 75
 --- !u!95 &4005288369874217983
 Animator:

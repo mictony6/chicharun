@@ -69,12 +69,12 @@ public class EnemyChase : EnemyState
     private void RangedChase()
     {
         float distanceFromPlayer = (enemy.transform.position - enemy.targetPlayer.transform.position).sqrMagnitude;
-        if(distanceFromPlayer < 20.0f && enemy.canAttack)
+        if (distanceFromPlayer < 20.0f && enemy.canAttack)
         {
 
             enemy.TransitionTo(EnemyStateTypes.Attack);
         }
-        else if(distanceFromPlayer < 20.0f && !enemy.canAttack)
+        else if (distanceFromPlayer < 20.0f && !enemy.canAttack)
         {
             enemy.chaseDirection = Vector2.zero;
             enemy.rigidBody.bodyType = RigidbodyType2D.Static;
@@ -98,9 +98,9 @@ public class EnemyChase : EnemyState
             {
                 enemy.TransitionTo(EnemyStateTypes.Attack);
             }
-  
+
         }
- 
+
         enemy.chaseDirection = GetDirectionToPlayer();
         enemy.rigidBody.velocity = enemy.chaseDirection * (enemy.speed * Time.deltaTime);
 

@@ -30,4 +30,7 @@ public class GameEvents : MonoBehaviour
     public UnityEvent PauseGame;
 
     public UnityEvent ResumeGame;
+    public UnityEvent CritAttack;
+    public UnityEvent<float> BulletTime;
+
 }

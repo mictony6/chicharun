@@ -1,7 +1,7 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-
 public class CombatBehavior : MonoBehaviour
 {
 
@@ -17,10 +17,16 @@ public class CombatBehavior : MonoBehaviour
     public float nextLevelThreshold;
     public int expDrop;
     public float damageModifier = 1;
-    public float defenseModifier = 1;
+    public float critChance = 0.05f;
+
+    [SerializeField] public float attackInterval = 0.75f;
+    private float timeTillNextAttack;
+    public bool canAttack = true;
+
 
     void Start()
     {
+        timeTillNextAttack = attackInterval;
         CombatBehavior.lastId += 1;
         this._id = CombatBehavior.lastId;
 
@@ -60,6 +66,10 @@ public class CombatBehavior : MonoBehaviour
 
     public int GetDamage()
     {
+        if (WillCrit())
+        {
+            return (int)Mathf.Ceil(damage * damageModifier) * 2;
+        }
         return (int)Mathf.Ceil(damage * damageModifier);
     }
 
@@ -78,11 +88,20 @@ public class CombatBehavior : MonoBehaviour
         if (this.exp > nextLevelThreshold)
         {
             level += 1;
-            nextLevelThreshold *=2;
+            nextLevelThreshold *= 2;
             GameEvents.current.LevelUp();
         }
     }
 
+    public void IncreaseAttackRate()
+    {
+        attackInterval -= 0.15f;
+    }
+    public void IncreaseMaxHealth()
+    {
+        maxHealth += 1;
+        currentHealth = maxHealth;
+    }
 
     public void IncreaseDamage()
     {
@@ -97,5 +116,35 @@ public class CombatBehavior : MonoBehaviour
     public float GetDefense()
     {
         return defense;
+    }
+
+    public void InceaseCrit()
+    {
+        critChance += 0.5f;
+    }
+
+    public bool WillCrit()
+    {
+        float randomRoll = UnityEngine.Random.Range(0.0f, 1.0f);
+        if (randomRoll < critChance)
+        {
+            GameEvents.current.CritAttack.Invoke();
+            return true;
+        }
+        return false;
+    }
+
+
+    void Update()
+    {
+        if (timeTillNextAttack <= 0)
+        {
+            canAttack = true;
+            timeTillNextAttack = attackInterval;
+        }
+        else if (timeTillNextAttack > 0 && canAttack == false)
+        {
+            timeTillNextAttack -= Time.deltaTime;
+        }
     }
 }

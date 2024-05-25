@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MovingState :  PlayerState
+public class MovingState : PlayerState
 {
     public MovingState(PlayerStateMachine player) : base(player)
     {

@@ -64,7 +64,7 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0) && _currentState == StateTypes.Move)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0) && _currentState != StateTypes.Attack && combatBehavior.canAttack)
         {
             TransitionTo(StateTypes.Attack);
         }
@@ -79,7 +79,7 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
             TransitionTo(StateTypes.Death);
         }
 
-        Debug.Log(_currentState);
+
     }
 
 

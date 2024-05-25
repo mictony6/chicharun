@@ -7,6 +7,7 @@ public class AttackState : PlayerState
 
     public override void OnEnter()
     {
+        player.combatBehavior.canAttack = false;
         player.weaponBehavior.Shoot();
         player.TransitionToPrev();
     }

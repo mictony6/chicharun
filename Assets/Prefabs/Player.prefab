@@ -150,14 +150,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  maxHealth: 3
+  maxHealth: 4
   currentHealth: 0
   damage: 2
   exp: 0
   nextLevelThreshold: 100
   expDrop: 0
   damageModifier: 1
-  defenseModifier: 0
+  critChance: 0.05
+  attackInterval: 0.25
+  canAttack: 1
 --- !u!95 &2609152801628452449
 Animator:
   serializedVersion: 5
@@ -241,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582ae0b5ca7821a469eca79ba1baa150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileMap: {fileID: 0}
 --- !u!1 &4089673271761403179
 GameObject:
   m_ObjectHideFlags: 0

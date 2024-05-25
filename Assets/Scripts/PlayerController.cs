@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         direction.y = Input.GetAxis("Vertical");
 
         direction.Normalize();
+    
     }
 
     public float GetSpeed()
