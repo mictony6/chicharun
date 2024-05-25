@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject meleeEnemyPrefab;
     [SerializeField] GameObject rangedEnemyPrefab;
+    [SerializeField] GameObject bossEnemyPrefab;
     [SerializeField] private float spawnRate;
     [SerializeField] private float meleeSpawnChance;
     [SerializeField] private float rangedSpawnChance;
@@ -18,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
 
     private int spawnLevel = 0;
     private int totalExp = 0;
+    private bool bossAlive = false;
 
     private void Start()
     {
@@ -43,8 +45,27 @@ public class EnemySpawner : MonoBehaviour
         if (totalExp > expThreshold[spawnLevel])
         {
             spawnLevel += 1;
+            if (spawnLevel >= expThreshold.Length)
+            {
+                if (!bossAlive)
+                {
+                    GameEvents.current.SpawnBoss.Invoke();
+                    SpawnBoss();
+                    bossAlive = true;
+
+                }
+                spawnLevel = expThreshold.Length - 1;
+                return;
+            }
             IncreaseDifficulty();
         }
+    }
+
+    private void SpawnBoss()
+    {
+        Vector3 randomPos = GetRandomOffScreenPosition();
+        Instantiate(bossEnemyPrefab, randomPos, Quaternion.identity);
+
     }
 
     void IncreaseDifficulty()
@@ -65,16 +86,19 @@ public class EnemySpawner : MonoBehaviour
         }
         if (!active) return;
 
-        Vector3 randomPos = GetRandomOffScreenPosition();
         if (timeToNextSpawn <= 0)
         {
             float roll = Random.value;
             if (roll <= rangedSpawnChance)
             {
+                Vector3 randomPos = GetRandomOffScreenPosition();
+
                 GameObject.Instantiate(rangedEnemyPrefab, randomPos, Quaternion.identity);
             }
             if (roll <= meleeSpawnChance)
             {
+                Vector3 randomPos = GetRandomOffScreenPosition();
+
                 GameObject.Instantiate(meleeEnemyPrefab, randomPos, Quaternion.identity);
             }
 

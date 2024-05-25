@@ -172,8 +172,8 @@ MonoBehaviour:
   nextLevelThreshold: 0
   expDrop: 15
   damageModifier: 1
-  critChance: 0.5
-  attackInterval: 1
+  critChance: 0
+  attackInterval: 2
   canAttack: 1
 --- !u!114 &415522482242976096
 MonoBehaviour:

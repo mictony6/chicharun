@@ -33,4 +33,5 @@ public class GameEvents : MonoBehaviour
     public UnityEvent CritAttack;
     public UnityEvent<float> BulletTime;
 
+    public UnityEvent SpawnBoss;
 }

@@ -48733,9 +48733,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleeEnemyPrefab: {fileID: 422999275901736758, guid: 2c0f5eb5c97e25e4f94d05834421ef3a, type: 3}
   rangedEnemyPrefab: {fileID: 422999275901736758, guid: 03d9504db05817541b662c0771f24599, type: 3}
-  spawnRate: 1
-  meleeSpawnChance: 1
-  rangedSpawnChance: 0.1
+  bossEnemyPrefab: {fileID: 1553779491824152478, guid: 40cd30905d2bc0e43967b552bffc55b1, type: 3}
+  spawnRate: 1.25
+  meleeSpawnChance: 0.75
+  rangedSpawnChance: 0.25
   playerTransform: {fileID: 1089723425}
   spawnDistance: 10
 --- !u!4 &1218735822
@@ -97261,6 +97262,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   BulletTime:
+    m_PersistentCalls:
+      m_Calls: []
+  SpawnBoss:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &2032522969
