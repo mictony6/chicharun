@@ -55,7 +55,6 @@ public class CombatBehavior : MonoBehaviour
     {
         if (isInvincible)
         {
-            Debug.Log("Is Invincible");
             return;
         }
 
@@ -168,7 +167,6 @@ public class CombatBehavior : MonoBehaviour
     private IEnumerator InvincibilityFrames()
     {
         yield return new WaitForSecondsRealtime(2.0f);
-        Debug.Log("Is No Longer Invincible");
         isInvincible = false;
     }
 }
