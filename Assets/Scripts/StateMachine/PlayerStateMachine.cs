@@ -26,6 +26,8 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
     [SerializeField] public GameObject gameOverUI;
     [SerializeField] public GameObject restartUI;
 
+    private SoundEffects soundManager;
+
 
     private void Start()
     {
@@ -34,6 +36,7 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
         rigidBody = GetComponent<Rigidbody2D>();
         weaponBehavior = GetComponentInChildren<WeaponBehavior>();
         combatBehavior = GetComponent<CombatBehavior>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundEffects>();
 
 
         InitStates();
@@ -77,6 +80,7 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0) && _currentState != StateTypes.Attack && combatBehavior.canAttack)
         {
             TransitionTo(StateTypes.Attack);
+            soundManager.PlayLazerSfx();
         }
 
          if (Input.GetKeyDown(KeyCode.Escape))
@@ -95,8 +99,6 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
         {
             TransitionTo(StateTypes.Death);
         }
-
-
     }
 
 

@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float spawnDistance;
     private float timeToNextSpawn;
     private bool active = true;
+    private SoundEffects soundManager;
 
     // private int[] expThreshold = { 100, 300, 400, 700, 1100 };
 
@@ -30,6 +31,8 @@ public class EnemySpawner : MonoBehaviour
         GameEvents.current.SummonBoss.AddListener(SpawnBoss);
         GameEvents.current.BossDeath.AddListener(OnBossDeath);
         GameEvents.current.MileStoneAchieved.AddListener(IncreaseDifficulty);
+
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundEffects>();
     }
 
     private void OnBossDeath()
@@ -70,6 +73,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnBoss()
     {
+        // soundManager.PlayBossSound(); not sure yet
         if (bossAlive) return;
         bossAlive = true;
         Vector3 randomPos = GetRandomOffScreenPosition();

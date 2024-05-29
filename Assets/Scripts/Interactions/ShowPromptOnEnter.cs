@@ -9,17 +9,21 @@ public class ShowPromptOnEnter : MonoBehaviour
     private bool playerNearby = false;
     private bool canSummon = true;
 
+    private SoundEffects soundManager;
+
 
     void Start()
     {
         // prompt = GameObject.Find("Prompt");
         HidePrompt();
         GameEvents.current.BossDeath.AddListener(OnBossDeath);
+        soundManager = GameObject.Find("SoundMananger").GetComponent<SoundEffects>();
     }
 
     private void OnBossDeath()
     {
         canSummon = true;
+        // soundManager.PlayBossDeath();
     }
 
     private void Update()
@@ -54,6 +58,7 @@ public class ShowPromptOnEnter : MonoBehaviour
     {
         playerNearby = true;
         prompt.SetActive(true);
+        // soundManager.PlayBossSound();
     }
 
     void HidePrompt()

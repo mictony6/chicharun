@@ -26,6 +26,7 @@ public class CombatBehavior : MonoBehaviour
 
     private bool isInvincible = false;
 
+    private SoundEffects soundManager;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class CombatBehavior : MonoBehaviour
 
         this.currentHealth = maxHealth;
         GameEvents.current.HeartCollected.AddListener(IncreaseMaxHealth);
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundEffects>();
     }
 
     public int GetId()
@@ -70,9 +72,11 @@ public class CombatBehavior : MonoBehaviour
         if (currentHealth < 0)
         {
             currentHealth = 0;
+            
         }
 
         isInvincible = true;
+        soundManager.PlayPlayerHitSfx();
     }
 
     public int GetDamage()

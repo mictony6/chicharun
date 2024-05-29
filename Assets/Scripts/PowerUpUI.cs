@@ -7,6 +7,7 @@ using UnityEngine;
 public class PowerUpUI : MonoBehaviour
 {
     public GameObject whiteFlashPanel; // Reference to the white panel
+    private SoundEffects soundManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +16,14 @@ public class PowerUpUI : MonoBehaviour
 
         GameEvents.current.onLevelUpTrigger += OnLevelUp;
         GameEvents.current.PowerUpUpdate.AddListener(OnPowerUpClick);
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundEffects>();
+
     }
 
     private void OnPowerUpClick(PowerUpType arg0)
     {
         FlashWhite();
+        soundManager.PlaySelectedPowerUp();
     }
 
     private async void OnLevelUp()
@@ -27,7 +31,7 @@ public class PowerUpUI : MonoBehaviour
         GameEvents.current.PauseGame.Invoke();
 
         FlashWhite();
-        
+        soundManager.PlayPowerUpSfx();
         await Task.Delay(TimeSpan.FromSeconds(1.0f));
         gameObject.SetActive(true);
     }

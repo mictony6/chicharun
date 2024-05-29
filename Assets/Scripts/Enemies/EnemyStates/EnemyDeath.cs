@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class EnemyDeath : EnemyState
 {
+    private SoundEffects soundManager;
     public EnemyDeath(EnemyStateMachine enemy) : base(enemy)
     {
     }
 
+    public void Start()
+    {
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundEffects>();
+    }
     public override void OnEnter()
     {
         if (enemy.targetPlayer)
         {
             GameEvents.current.EnemyDeath.Invoke(enemy.combatBehavior.expDrop);
+            
             // CombatBehavior playerCb = enemy.targetPlayer.GetComponent<CombatBehavior>();
             //playerCb.collectExp(enemy.combatBehavior.expDrop);
         }
@@ -18,6 +24,7 @@ public class EnemyDeath : EnemyState
         if(enemy.enemyType == EnemyType.Boss){
             GameEvents.current.BossDeath.Invoke();
         }
+
         GameObject.Destroy(enemy.gameObject);
 
 
