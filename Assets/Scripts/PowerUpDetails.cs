@@ -11,13 +11,15 @@ public enum PowerUpType
     SpeedUp,
 }
 
-public class PowerUpDetails : MonoBehaviour, IPointerClickHandler
+public class PowerUpDetails : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] Sprite hoverSprite;
+    [SerializeField] Sprite normalSprite;
     CombatBehavior playerCb;
     PlayerController playerController;
     [SerializeField] PowerUpType powerUpType;
     GameObject powerUpUI;
-    private Image overlay;
+    private Image image;
 
     void Start()
     {
@@ -26,6 +28,7 @@ public class PowerUpDetails : MonoBehaviour, IPointerClickHandler
         playerController = player.GetComponent<PlayerController>();
 
         powerUpUI = GameObject.Find("PowerUpUI");
+        image = GetComponent<Image>();
     }
     public void Apply()
     {
@@ -55,5 +58,18 @@ public class PowerUpDetails : MonoBehaviour, IPointerClickHandler
 
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(image != null){
+            image.sprite = hoverSprite;
+        }
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (image != null){
+            image.sprite = normalSprite;
+
+        }
+    }
 }

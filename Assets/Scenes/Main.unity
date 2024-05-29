@@ -2147,6 +2147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5caffad51d66e47986fd38587c0576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverSprite: {fileID: 0}
+  normalSprite: {fileID: 0}
   powerUpType: 0
 --- !u!114 &787113237
 MonoBehaviour:
@@ -2160,6 +2162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5caffad51d66e47986fd38587c0576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverSprite: {fileID: 0}
+  normalSprite: {fileID: 0}
   powerUpType: 0
 --- !u!114 &787113238
 MonoBehaviour:
@@ -2606,7 +2610,7 @@ MonoBehaviour:
   meleeEnemyPrefab: {fileID: 422999275901736758, guid: 2c0f5eb5c97e25e4f94d05834421ef3a, type: 3}
   rangedEnemyPrefab: {fileID: 422999275901736758, guid: 03d9504db05817541b662c0771f24599, type: 3}
   bossEnemyPrefab: {fileID: 1553779491824152478, guid: 40cd30905d2bc0e43967b552bffc55b1, type: 3}
-  spawnRate: 1
+  spawnRate: 2
   meleeSpawnChance: 0.5
   rangedSpawnChance: 0.25
   playerTransform: {fileID: 533870696}
@@ -7551,7 +7555,7 @@ PrefabInstance:
     - target: {fileID: 6338142289299797568, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1902945087, guid: ebf20a7baf756e44b82d0bcc7564243a, type: 3}
+      objectReference: {fileID: -1742020927, guid: f4e1ce503026f9043a1c31c027da0106, type: 3}
     - target: {fileID: 7388876509733862111, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: m_Name
       value: PowerUpCard (2)
@@ -31472,6 +31476,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 787113235}
     m_Modifications:
+    - target: {fileID: -2857898703509155366, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: -792096714, guid: f4e1ce503026f9043a1c31c027da0106, type: 3}
     - target: {fileID: 1021204027286552047, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -31551,6 +31559,10 @@ PrefabInstance:
     - target: {fileID: 1021204027286552047, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338142289299797568, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7388876509733862111, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: m_Name
@@ -107842,7 +107854,7 @@ PrefabInstance:
     - target: {fileID: 6338142289299797568, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1216908201, guid: ebf20a7baf756e44b82d0bcc7564243a, type: 3}
+      objectReference: {fileID: -1593055111, guid: f4e1ce503026f9043a1c31c027da0106, type: 3}
     - target: {fileID: 7388876509733862111, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: m_Name
       value: PowerUpCard (1)
