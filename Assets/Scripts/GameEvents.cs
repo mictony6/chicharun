@@ -23,6 +23,7 @@ public class GameEvents : MonoBehaviour
     }
 
     public UnityEvent<int> EnemyDeath;
+    public UnityEvent BossDeath;
 
     public UnityEvent<PowerUpType> PowerUpUpdate;
 
@@ -33,11 +34,13 @@ public class GameEvents : MonoBehaviour
     public UnityEvent CritAttack;
     public UnityEvent<float> BulletTime;
 
-    public UnityEvent SpawnBoss;
+    public UnityEvent<GameObject> SpawnBoss;
 
     public UnityEvent GameOver;
 
     public UnityEvent SummonBoss;
 
     public UnityEvent<string> TimeTick;
+
+    public UnityEvent<int> MileStoneAchieved;
 }

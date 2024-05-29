@@ -15,7 +15,11 @@ public class EnemyDeath : EnemyState
             //playerCb.collectExp(enemy.combatBehavior.expDrop);
         }
         GameObject.Instantiate(enemy.deathParticle, enemy.transform.position, Quaternion.identity);
+        if(enemy.enemyType == EnemyType.Boss){
+            GameEvents.current.BossDeath.Invoke();
+        }
         GameObject.Destroy(enemy.gameObject);
+
 
     }
 
