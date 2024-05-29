@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
     public CombatBehavior combatBehavior;
 
     [SerializeField] public GameObject gameOverUI;
+    [SerializeField] public GameObject restartUI;
 
 
     private void Start()
@@ -68,6 +70,13 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
         {
             TransitionTo(StateTypes.Attack);
         }
+
+         if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            restartUI.SetActive(true);
+            GameEvents.current.PauseGame.Invoke();
+        }
+
 
         animator.SetFloat("xDir", playerController.direction.x);
         animator.SetFloat("yDir", playerController.direction.y);
