@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraWorks : MonoBehaviour
@@ -12,8 +13,14 @@ public class CameraWorks : MonoBehaviour
 
     Vector3 originalPos; // Original position of the camera
 
+    private bool followPlayer = true;
+    private Rigidbody2D rigidbody2D;
+
     void Start(){
         GameEvents.current.AttackLand.AddListener(Shake);
+        rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+
     }
 
     // Update is called once per frame
@@ -21,14 +28,18 @@ public class CameraWorks : MonoBehaviour
     {
         if (player != null)
         {
-            transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+            if (rigidbody2D != null){
+                rigidbody2D.velocity = (player.transform.position - transform.position).normalized * 100;
+            }
         }
+
 
     }
     public void Shake()
     {
         if (transform != null)
         {
+            originalPos = transform.position;
             StartCoroutine(ShakeCoroutine());
         }
     }
@@ -38,8 +49,8 @@ public class CameraWorks : MonoBehaviour
 
         while (elapsed < shakeDuration)
         {
-            float x = transform.position.x + Random.Range(-shakeAmount, shakeAmount);
-            float y = transform.position.y + Random.Range(-shakeAmount, shakeAmount);
+            float x = originalPos.x + Random.Range(-shakeAmount, shakeAmount);
+            float y = originalPos.y + Random.Range(-shakeAmount, shakeAmount);
 
             transform.position = new Vector3(x, y, -10);
 
@@ -48,6 +59,7 @@ public class CameraWorks : MonoBehaviour
             yield return null;
         }
 
-        transform.localPosition =new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
     }
+    
+
 }
