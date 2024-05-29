@@ -43,4 +43,6 @@ public class GameEvents : MonoBehaviour
     public UnityEvent<string> TimeTick;
 
     public UnityEvent<int> MileStoneAchieved;
+
+    public UnityEvent GameWin;
 }

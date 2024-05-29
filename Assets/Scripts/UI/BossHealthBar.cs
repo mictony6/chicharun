@@ -30,7 +30,6 @@ public class BossHealthBar : MonoBehaviour
     void Update()
     {
         if(boss != null){
-            Debug.Log((float)bossCb.currentHealth/bossCb.maxHealth);
             currentHealthFill.fillAmount = (float)bossCb.currentHealth/bossCb.maxHealth;
 
         // Check if it's time to update the last health fill

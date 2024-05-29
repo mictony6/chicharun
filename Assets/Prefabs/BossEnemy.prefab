@@ -171,7 +171,7 @@ MonoBehaviour:
   damage: 1
   exp: 0
   nextLevelThreshold: 0
-  expDrop: 100
+  expDrop: 0
   damageModifier: 1
   critChance: 0.75
   attackInterval: 1
