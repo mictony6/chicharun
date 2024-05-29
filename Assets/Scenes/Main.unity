@@ -7469,9 +7469,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 787113235}
     m_Modifications:
     - target: {fileID: -2857898703509155366, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 973759563, guid: f4e1ce503026f9043a1c31c027da0106, type: 3}
+    - target: {fileID: -2857898703509155366, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: powerUpType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -2857898703509155366, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
+      propertyPath: normalSprite
+      value: 
+      objectReference: {fileID: -1742020927, guid: f4e1ce503026f9043a1c31c027da0106, type: 3}
     - target: {fileID: 1021204027286552047, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -31480,6 +31488,10 @@ PrefabInstance:
       propertyPath: hoverSprite
       value: 
       objectReference: {fileID: -792096714, guid: f4e1ce503026f9043a1c31c027da0106, type: 3}
+    - target: {fileID: -2857898703509155366, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
+      propertyPath: normalSprite
+      value: 
+      objectReference: {fileID: 856928427, guid: f4e1ce503026f9043a1c31c027da0106, type: 3}
     - target: {fileID: 1021204027286552047, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -107768,9 +107780,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 787113235}
     m_Modifications:
     - target: {fileID: -2857898703509155366, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 775834114, guid: f4e1ce503026f9043a1c31c027da0106, type: 3}
+    - target: {fileID: -2857898703509155366, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: powerUpType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2857898703509155366, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
+      propertyPath: normalSprite
+      value: 
+      objectReference: {fileID: -1593055111, guid: f4e1ce503026f9043a1c31c027da0106, type: 3}
     - target: {fileID: 1021204027286552047, guid: 751c21e309f29de479611d47b2781fb1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
