@@ -38,4 +38,6 @@ public class GameEvents : MonoBehaviour
     public UnityEvent GameOver;
 
     public UnityEvent SummonBoss;
+
+    public UnityEvent<string> TimeTick;
 }

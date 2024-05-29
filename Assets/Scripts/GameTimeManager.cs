@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -7,9 +8,13 @@ using UnityEngine;
 
 public class GameTimeManager : MonoBehaviour
 {
-    private const float maxGameTime = 6000;
+    private const float maxGameTime = 600;
     private float timeTillGameOver = 0.0f;
+    private string lastTime = "10:00";
 
+    void Awake(){
+        Time.timeScale = 1.0f;
+    }
     void Start()
     {
         timeTillGameOver = maxGameTime;
@@ -28,7 +33,18 @@ public class GameTimeManager : MonoBehaviour
         }
         else
         {
+            // Convert float seconds to TimeSpan
+            TimeSpan timeSpan = TimeSpan.FromSeconds(timeTillGameOver);
+
+             // Format TimeSpan as string in 00:00 format
+            string formattedTime = string.Format("{0:D2}:{1:D2}", (int)timeSpan.TotalMinutes, (int)(timeSpan.TotalSeconds%60));
+
+            string currentTimeLeft  = formattedTime;
+            if(lastTime != currentTimeLeft){
+                GameEvents.current.TimeTick.Invoke(currentTimeLeft);
+            }
             timeTillGameOver -= Time.deltaTime;
+            lastTime = currentTimeLeft;
         }
     }
 
@@ -50,7 +66,7 @@ public class GameTimeManager : MonoBehaviour
     IEnumerator TimeFreeze(float seconds)
     {
 
-        Time.timeScale = 0.25f;
+        Time.timeScale = 0.16f;
         yield return new WaitForSecondsRealtime(seconds);
         Time.timeScale = 1.0f;
     }

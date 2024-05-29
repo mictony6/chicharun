@@ -42,7 +42,13 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
 
         GameEvents.current.PauseGame.AddListener(PauseMachine);
         GameEvents.current.ResumeGame.AddListener(ResumeMachine);
+        GameEvents.current.GameOver.AddListener(Die);
 
+    }
+
+    private void Die()
+    {
+        TransitionTo(StateTypes.Death);
     }
 
     private void PauseMachine()

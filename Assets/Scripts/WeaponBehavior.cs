@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WeaponBehavior : MonoBehaviour
 {
+    private bool isPaused;
+    
     GameObject player;
     CombatBehavior playerCb;
     [SerializeField] private GameObject bulletPrefab;
@@ -16,10 +18,13 @@ public class WeaponBehavior : MonoBehaviour
     {
         player = GameObject.Find("Player");
         playerCb = player.GetComponent<CombatBehavior>();
+        GameEvents.current.PauseGame.AddListener(OnPause);
+        GameEvents.current.ResumeGame.AddListener(OnResume);
     }
     // Update is called once per frame
     void Update()
     {
+        if (isPaused) return;
         cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = cursorPosition - player.transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -31,7 +36,13 @@ public class WeaponBehavior : MonoBehaviour
 
     }
 
+    void OnPause(){
+        isPaused = true;
+    }
 
+    void OnResume(){
+        isPaused = false;
+    }
 
     public void Shoot()
     {
