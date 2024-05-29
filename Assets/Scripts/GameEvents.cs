@@ -45,4 +45,6 @@ public class GameEvents : MonoBehaviour
     public UnityEvent<int> MileStoneAchieved;
 
     public UnityEvent GameWin;
+
+    public UnityEvent HeartCollected;
 }

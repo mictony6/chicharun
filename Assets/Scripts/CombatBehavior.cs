@@ -34,6 +34,7 @@ public class CombatBehavior : MonoBehaviour
         this._id = CombatBehavior.lastId;
 
         this.currentHealth = maxHealth;
+        GameEvents.current.HeartCollected.AddListener(IncreaseMaxHealth);
     }
 
     public int GetId()
