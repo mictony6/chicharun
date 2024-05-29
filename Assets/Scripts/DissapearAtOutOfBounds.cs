@@ -24,7 +24,7 @@ public class DissapearAtOutOfBounds : MonoBehaviour
 
     IEnumerator Dissapear()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
 }

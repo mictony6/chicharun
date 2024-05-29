@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 direction;
     public Vector2 lastDirection;
-    private int speed = 200;
+    [SerializeField] private int speed = 125;
     public float speedModifier = 1.0f;
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         direction.y = Input.GetAxis("Vertical");
 
         direction.Normalize();
-    
+
     }
 
     public float GetSpeed()

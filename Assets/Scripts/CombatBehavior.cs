@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -22,6 +23,8 @@ public class CombatBehavior : MonoBehaviour
     [SerializeField] public float attackInterval = 0.75f;
     private float timeTillNextAttack;
     public bool canAttack = true;
+
+    private bool isInvincible = false;
 
 
     void Start()
@@ -50,6 +53,12 @@ public class CombatBehavior : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isInvincible)
+        {
+            Debug.Log("Is Invincible");
+            return;
+        }
+
         if (defense > 0)
         {
             // do something effect chuchu
@@ -62,6 +71,8 @@ public class CombatBehavior : MonoBehaviour
         {
             currentHealth = 0;
         }
+
+        isInvincible = true;
     }
 
     public int GetDamage()
@@ -146,5 +157,18 @@ public class CombatBehavior : MonoBehaviour
         {
             timeTillNextAttack -= Time.deltaTime;
         }
+
+        if (isInvincible)
+        {
+
+            StartCoroutine(InvincibilityFrames());
+        }
+    }
+
+    private IEnumerator InvincibilityFrames()
+    {
+        yield return new WaitForSecondsRealtime(2.0f);
+        Debug.Log("Is No Longer Invincible");
+        isInvincible = false;
     }
 }

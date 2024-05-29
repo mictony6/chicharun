@@ -10,6 +10,7 @@ public class EnemyPause : EnemyState
 
     public override void OnEnter()
     {
+        
         enemy.rigidBody.velocity = Vector3.zero;
 
 

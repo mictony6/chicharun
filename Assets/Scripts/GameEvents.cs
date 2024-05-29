@@ -34,4 +34,6 @@ public class GameEvents : MonoBehaviour
     public UnityEvent<float> BulletTime;
 
     public UnityEvent SpawnBoss;
+
+    public UnityEvent GameOver;
 }

@@ -1,10 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Timers;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameTimeManager : MonoBehaviour
 {
+    private const float maxGameTime = 6000;
+    private float timeTillGameOver = 0.0f;
+
+    void Start()
+    {
+        timeTillGameOver = maxGameTime;
+
+    }
+
+    void Update()
+    {
+        if (timeTillGameOver <= 0)
+        {
+            OnGameTimerElapsed();
+        }
+        else
+        {
+            timeTillGameOver -= Time.deltaTime;
+        }
+    }
+
+    void OnGameTimerElapsed()
+    {
+        GameEvents.current.GameOver.Invoke();
+    }
     public void OnAttackLand()
     {
         // StartCoroutine(TimeFreeze());
