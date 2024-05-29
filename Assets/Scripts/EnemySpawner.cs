@@ -20,12 +20,14 @@ public class EnemySpawner : MonoBehaviour
     private int spawnLevel = 0;
     private int totalExp = 0;
     private bool bossAlive = false;
+    private bool canSummonBoss = false;
 
     private void Start()
     {
         GameEvents.current.PauseGame.AddListener(Stop);
         GameEvents.current.ResumeGame.AddListener(Resume);
         GameEvents.current.EnemyDeath.AddListener(OnEnemyDeath);
+        GameEvents.current.SummonBoss.AddListener(SpawnBoss);
     }
 
 
@@ -47,13 +49,12 @@ public class EnemySpawner : MonoBehaviour
             spawnLevel += 1;
             if (spawnLevel >= expThreshold.Length)
             {
-                if (!bossAlive)
-                {
-                    GameEvents.current.SpawnBoss.Invoke();
-                    SpawnBoss();
-                    bossAlive = true;
-
-                }
+                //if (!bossAlive)
+                //{
+                //    Debug.Log("You can summon the boss now");
+                //    canSummonBoss = true;
+                //
+                //}
                 spawnLevel = expThreshold.Length - 1;
                 return;
             }

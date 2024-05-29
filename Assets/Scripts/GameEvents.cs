@@ -36,4 +36,6 @@ public class GameEvents : MonoBehaviour
     public UnityEvent SpawnBoss;
 
     public UnityEvent GameOver;
+
+    public UnityEvent SummonBoss;
 }

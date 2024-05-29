@@ -13,6 +13,10 @@ public class GameTimeManager : MonoBehaviour
     void Start()
     {
         timeTillGameOver = maxGameTime;
+        GameEvents.current.PauseGame.AddListener(OnPauseGame);
+        GameEvents.current.ResumeGame.AddListener(OnResumeGame);
+        GameEvents.current.BulletTime.AddListener(OnBulletTime);
+        GameEvents.current.AttackLand.AddListener(OnAttackLand);
 
     }
 
@@ -34,10 +38,8 @@ public class GameTimeManager : MonoBehaviour
     }
     public void OnAttackLand()
     {
-        // StartCoroutine(TimeFreeze());
-        GameEvents.current.PauseGame.AddListener(OnPauseGame);
-        GameEvents.current.ResumeGame.AddListener(OnResumeGame);
-        GameEvents.current.BulletTime.AddListener(OnBulletTime);
+        StartCoroutine(TimeFreeze(0.5f));
+
     }
 
     void OnBulletTime(float seconds)
@@ -48,8 +50,8 @@ public class GameTimeManager : MonoBehaviour
     IEnumerator TimeFreeze(float seconds)
     {
 
-        Time.timeScale = 0.5f;
-        yield return new WaitForSeconds(seconds);
+        Time.timeScale = 0.25f;
+        yield return new WaitForSecondsRealtime(seconds);
         Time.timeScale = 1.0f;
     }
 

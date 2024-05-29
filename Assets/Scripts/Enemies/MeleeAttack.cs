@@ -23,6 +23,8 @@ public class MeleeAttack : MonoBehaviour
         
         if (collision.CompareTag("Player"))
         {
+            GameEvents.current.AttackLand.Invoke();
+            
             CombatBehavior playerCb = collision.gameObject.GetComponentInParent<CombatBehavior>();
             if (playerCb != null)
             {
