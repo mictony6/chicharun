@@ -365,6 +365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 533870697}
+  shakeDuration: 0.15
+  shakeAmount: 0.05
 --- !u!114 &34561901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1963,7 +1965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1195768288879650774, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
       propertyPath: exp
-      value: 99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5366874787692057925, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
       propertyPath: m_LocalPosition.x

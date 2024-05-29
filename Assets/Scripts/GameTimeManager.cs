@@ -9,7 +9,7 @@ using UnityEngine;
 public class GameTimeManager : MonoBehaviour
 {
     private const float maxGameTime = 600;
-    private int[] mileStones = {600-60, 600-(3*60), 600-(5*60)};
+    private int[] mileStones = {600-60, 600-(3*60), 600-(5*60), 600-(8*60), 600};
     private int currentMileStone = 0;
     private float timeTillGameOver = 0.0f;
     private string lastTime = "10:00";
@@ -61,7 +61,7 @@ public class GameTimeManager : MonoBehaviour
     }
     public void OnAttackLand()
     {
-        StartCoroutine(TimeFreeze(0.5f));
+        StartCoroutine(TimeFreeze(0.25f));
 
     }
 
@@ -72,7 +72,7 @@ public class GameTimeManager : MonoBehaviour
     }
     IEnumerator TimeFreeze(float seconds)
     {
-        yield return new WaitForSecondsRealtime(0.25f);
+        yield return new WaitForSecondsRealtime(0.15f);
 
         Time.timeScale = 0.16f;
         yield return new WaitForSecondsRealtime(seconds);
