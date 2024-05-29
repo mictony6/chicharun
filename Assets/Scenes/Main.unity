@@ -48143,6 +48143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossSummon
       objectReference: {fileID: 0}
+    - target: {fileID: 7251389442658653636, guid: 21735aa7a0a707b4c8eec3446ce30fa1, type: 3}
+      propertyPath: tileMap
+      value: 
+      objectReference: {fileID: 113518562}
     - target: {fileID: 7458300167214795961, guid: 21735aa7a0a707b4c8eec3446ce30fa1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.77
@@ -48186,28 +48190,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 507956707652483384, guid: 21735aa7a0a707b4c8eec3446ce30fa1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 460492617}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21735aa7a0a707b4c8eec3446ce30fa1, type: 3}
---- !u!1 &460492612 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 507956707652483384, guid: 21735aa7a0a707b4c8eec3446ce30fa1, type: 3}
-  m_PrefabInstance: {fileID: 460492611}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &460492617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460492612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1255f5c2fd22f7749b03e37b3f73b52b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &479198814
 GameObject:
   m_ObjectHideFlags: 0
@@ -107301,6 +107285,9 @@ MonoBehaviour:
   GameOver:
     m_PersistentCalls:
       m_Calls: []
+  SummonBoss:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &2032522969
 Transform:
   m_ObjectHideFlags: 0
@@ -107886,11 +107873,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5366874787692057925, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.83
+      value: 26.3
       objectReference: {fileID: 0}
     - target: {fileID: 5366874787692057925, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -32.77
+      value: -33.2
       objectReference: {fileID: 0}
     - target: {fileID: 5366874787692057925, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
       propertyPath: m_LocalPosition.z
@@ -107936,7 +107923,8 @@ PrefabInstance:
       propertyPath: tileMap
       value: 
       objectReference: {fileID: 113518562}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6463908150920870094, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5366874787692057925, guid: 69b40aa28e7ec48438a3d3145de1fe92, type: 3}
