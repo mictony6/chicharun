@@ -1,6 +1,9 @@
-
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 public class AttackState : PlayerState
 {
+    private SoundManager soundEffects;
     public AttackState(PlayerStateMachine player) : base(player)
     {
     }
@@ -21,4 +24,6 @@ public class AttackState : PlayerState
     {
 
     }
+
+    
 }

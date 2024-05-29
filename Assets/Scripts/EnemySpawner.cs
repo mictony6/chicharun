@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float rangedSpawnChance;
     [SerializeField] Transform playerTransform;
     [SerializeField] float spawnDistance;
+    private SoundManager soundEffects;
     private float timeToNextSpawn;
     private bool active = true;
 
@@ -26,6 +27,9 @@ public class EnemySpawner : MonoBehaviour
         GameEvents.current.PauseGame.AddListener(Stop);
         GameEvents.current.ResumeGame.AddListener(Resume);
         GameEvents.current.EnemyDeath.AddListener(OnEnemyDeath);
+
+        soundEffects = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+
     }
 
 
@@ -59,6 +63,7 @@ public class EnemySpawner : MonoBehaviour
             }
             IncreaseDifficulty();
         }
+        soundEffects.PlayEnemyHitSFX();
     }
 
     private void SpawnBoss()

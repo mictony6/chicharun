@@ -19,6 +19,7 @@ public class CombatBehavior : MonoBehaviour
     public int expDrop;
     public float damageModifier = 1;
     public float critChance = 0.05f;
+    public SoundManager soundEffects;
 
     [SerializeField] public float attackInterval = 0.75f;
     private float timeTillNextAttack;
@@ -34,6 +35,7 @@ public class CombatBehavior : MonoBehaviour
         this._id = CombatBehavior.lastId;
 
         this.currentHealth = maxHealth;
+        soundEffects = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     public int GetId()
@@ -73,6 +75,7 @@ public class CombatBehavior : MonoBehaviour
         }
 
         isInvincible = true;
+        soundEffects.PlayPlayerHitSFX();
     }
 
     public int GetDamage()
