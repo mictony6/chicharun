@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,15 +15,24 @@ public class SoundEffects : MonoBehaviour
     [SerializeField] private AudioClip SelectPowerUpSound;
     [SerializeField] private AudioClip bossSound;
     [SerializeField] private AudioClip bossDeathSound;
+    [SerializeField] private AudioClip inGameMusic;
+
     private AudioSource playerSfxSource;
+    [SerializeField] AudioSource backgroundAudioSource;
+    public static SoundEffects current;
+
+    void Awake(){
+        current = this;
+    }
     void Start()
     {
         playerSfxSource = GetComponent<AudioSource>();
+        PlayInGameMusic();
     }
 
     public void PlayExplosionSfx()
     {
-        playerSfxSource.PlayOneShot(explosionSound);
+        playerSfxSource.PlayOneShot(explosionSound, 0.6f);
     }
 
     public void PlayLazerSfx()
@@ -57,11 +67,28 @@ public class SoundEffects : MonoBehaviour
 
     public void PlayBossSound()
     {
-        playerSfxSource.PlayOneShot(bossSound);
+        Debug.Log("Player the boss music");
+        playerSfxSource.Stop();
+        playerSfxSource.clip = bossSound;
+        playerSfxSource.Play();
     }
 
     public void PlayBossDeath()
     {
         playerSfxSource.PlayOneShot(bossDeathSound);
+    }
+
+    internal void PlayInGameMusic()
+    {
+        StartCoroutine(WaitAndPlayBackground());
+
+    }
+
+    private IEnumerator WaitAndPlayBackground()
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        playerSfxSource.clip = inGameMusic;
+        playerSfxSource.volume = 0.6f;
+        playerSfxSource.Play();
     }
 }

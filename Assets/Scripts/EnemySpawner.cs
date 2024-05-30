@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
         GameEvents.current.BossDeath.AddListener(OnBossDeath);
         GameEvents.current.MileStoneAchieved.AddListener(IncreaseDifficulty);
 
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundEffects>();
+        soundManager = SoundEffects.current;
     }
 
     private void OnBossDeath()
@@ -75,6 +75,7 @@ public class EnemySpawner : MonoBehaviour
     {
         // soundManager.PlayBossSound(); not sure yet
         if (bossAlive) return;
+        soundManager.PlayBossSound();
         bossAlive = true;
         Vector3 randomPos = GetRandomOffScreenPosition();
         GameObject boss = Instantiate(bossEnemyPrefab, randomPos, Quaternion.identity);

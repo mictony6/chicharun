@@ -17,6 +17,13 @@ public class BossHealthBar : MonoBehaviour
     {
         gameObject.SetActive(false);
         GameEvents.current.SpawnBoss.AddListener(OnBossSpawn);
+        GameEvents.current.BossDeath.AddListener(OnBossDeath);
+    }
+
+    private void OnBossDeath()
+    {
+        gameObject.SetActive(false);
+
     }
 
     private void OnBossSpawn(GameObject obj)

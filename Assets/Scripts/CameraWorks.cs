@@ -14,11 +14,11 @@ public class CameraWorks : MonoBehaviour
     Vector3 originalPos; // Original position of the camera
 
     private bool followPlayer = true;
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D rb;
 
     void Start(){
         GameEvents.current.AttackLand.AddListener(Shake);
-        rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
 
     }
@@ -28,8 +28,8 @@ public class CameraWorks : MonoBehaviour
     {
         if (player != null)
         {
-            if (rigidbody2D != null){
-                rigidbody2D.velocity = (player.transform.position - transform.position).normalized * 100;
+            if (rb != null){
+                rb.velocity = (player.transform.position - transform.position).normalized * 100;
             }
         }
 

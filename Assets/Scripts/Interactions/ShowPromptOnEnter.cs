@@ -17,7 +17,7 @@ public class ShowPromptOnEnter : MonoBehaviour
         // prompt = GameObject.Find("Prompt");
         HidePrompt();
         GameEvents.current.BossDeath.AddListener(OnBossDeath);
-        soundManager = GameObject.Find("SoundMananger").GetComponent<SoundEffects>();
+        soundManager = SoundEffects.current;
     }
 
     private void OnBossDeath()

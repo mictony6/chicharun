@@ -23,6 +23,8 @@ public class EnemyDeath : EnemyState
         GameObject.Instantiate(enemy.deathParticle, enemy.transform.position, Quaternion.identity);
         if(enemy.enemyType == EnemyType.Boss){
             GameEvents.current.BossDeath.Invoke();
+            SoundEffects.current.PlayBossDeath();
+            SoundEffects.current.PlayInGameMusic();
         }
 
         GameObject.Destroy(enemy.gameObject);
