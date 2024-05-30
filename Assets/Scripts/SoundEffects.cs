@@ -67,7 +67,6 @@ public class SoundEffects : MonoBehaviour
 
     public void PlayBossSound()
     {
-        Debug.Log("Player the boss music");
         playerSfxSource.Stop();
         playerSfxSource.clip = bossSound;
         playerSfxSource.Play();

@@ -12,10 +12,8 @@ GameObject:
   - component: {fileID: 7147786967283181642}
   - component: {fileID: 4673860877166667440}
   - component: {fileID: 1337289785394838810}
-  - component: {fileID: 2494357603838700597}
-  - component: {fileID: 7251389442658653636}
   m_Layer: 0
-  m_Name: BossSummon
+  m_Name: Statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,31 +142,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2494357603838700597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507956707652483384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1255f5c2fd22f7749b03e37b3f73b52b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7251389442658653636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507956707652483384}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 582ae0b5ca7821a469eca79ba1baa150, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileMap: {fileID: 0}
 --- !u!1 &6580093768059577687
 GameObject:
   m_ObjectHideFlags: 0

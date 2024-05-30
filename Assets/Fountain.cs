@@ -33,14 +33,7 @@ public class Fountain : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(active && collision.CompareTag("Player")){
-            GameEvents.current.GameWin.Invoke();
-            Debug.Log("you Won");
-        }
 
-    }
 
 
 }

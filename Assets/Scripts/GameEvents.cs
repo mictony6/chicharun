@@ -18,6 +18,7 @@ public class GameEvents : MonoBehaviour
     {
         if (onLevelUpTrigger != null)
         {
+
             onLevelUpTrigger();
         }
     }
@@ -47,4 +48,6 @@ public class GameEvents : MonoBehaviour
     public UnityEvent GameWin;
 
     public UnityEvent HeartCollected;
+
+    public UnityEvent BadEnding;
 }

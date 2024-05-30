@@ -2,12 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShowPromptOnEnter : MonoBehaviour
 {
     [SerializeField] GameObject prompt;
+    [SerializeField] GameObject exitPrompt;
+
     private bool playerNearby = false;
     private bool canSummon = true;
+    private bool canExit = false;
 
     private SoundEffects soundManager;
 
@@ -22,7 +26,8 @@ public class ShowPromptOnEnter : MonoBehaviour
 
     private void OnBossDeath()
     {
-        canSummon = true;
+        Debug.Log("Boss deadz");
+        canExit = true;
         // soundManager.PlayBossDeath();
     }
 
@@ -30,7 +35,14 @@ public class ShowPromptOnEnter : MonoBehaviour
     {
         if (playerNearby)
         {
+        Debug.Log("Player nearby...");
+
             if (Input.GetKeyDown(KeyCode.E)) {
+                if(canExit){
+                    GameEvents.current.GameWin.Invoke();
+                    SceneManager.LoadScene("Good Ending", LoadSceneMode.Single);
+                    return;
+                }
                 canSummon = false;
                 GameEvents.current.SummonBoss.Invoke();
                 HidePrompt();
@@ -40,17 +52,31 @@ public class ShowPromptOnEnter : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && canSummon)
+        if (collision.gameObject.tag == "Player" )
         {
-            ShowPrompt();
+            if(canSummon){
+                ShowPrompt();
+            }
+            if(canExit){
+                playerNearby = true;
+                exitPrompt.SetActive(true);
+
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && canSummon)
+        if (collision.gameObject.tag == "Player" )
         {
-            HidePrompt();
+            if(canSummon){
+                HidePrompt();
+            }
+            if(canExit){
+                playerNearby = true;
+                exitPrompt.SetActive(false);
+
+            }
         }
     }
 
@@ -65,5 +91,6 @@ public class ShowPromptOnEnter : MonoBehaviour
     {
         playerNearby = false;
         prompt.SetActive(false);
+        exitPrompt.SetActive(false);
     }
 }

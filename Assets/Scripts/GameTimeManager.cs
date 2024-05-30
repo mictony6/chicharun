@@ -5,6 +5,7 @@ using System.Threading;
 using System.Timers;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameTimeManager : MonoBehaviour
 {
@@ -57,7 +58,8 @@ public class GameTimeManager : MonoBehaviour
 
     void OnGameTimerElapsed()
     {
-        GameEvents.current.GameOver.Invoke();
+        GameEvents.current.BadEnding.Invoke();
+        SceneManager.LoadScene("Bad Ending", LoadSceneMode.Single);
     }
     public void OnAttackLand()
     {
