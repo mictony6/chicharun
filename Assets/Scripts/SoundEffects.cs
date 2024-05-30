@@ -57,12 +57,12 @@ public class SoundEffects : MonoBehaviour
 
     public void PlayPowerUpSfx()
     {
-        playerSfxSource.PlayOneShot(powerUpSound, 0.5f);
+        playerSfxSource.PlayOneShot(powerUpSound, 2f);
     }
 
     public void PlaySelectedPowerUp()
     {
-        playerSfxSource.PlayOneShot(SelectPowerUpSound);
+        playerSfxSource.PlayOneShot(SelectPowerUpSound, 0.5f);
     }
 
     public void PlayBossSound()
