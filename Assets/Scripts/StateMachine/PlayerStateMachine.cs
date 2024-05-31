@@ -21,10 +21,12 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
     public WeaponBehavior weaponBehavior;
     public CombatBehavior combatBehavior;
 
+
+
     [SerializeField] public GameObject gameOverUI;
     [SerializeField] public GameObject restartUI;
-    [SerializeField] public AudioSource audioSource;
-    private SoundManager soundEffects;
+
+    private SoundEffects soundManager;
 
 
     private void Start()
@@ -34,7 +36,7 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
         rigidBody = GetComponent<Rigidbody2D>();
         weaponBehavior = GetComponentInChildren<WeaponBehavior>();
         combatBehavior = GetComponent<CombatBehavior>();
-        soundEffects = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundEffects>();
 
 
         InitStates();
@@ -43,7 +45,13 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
 
         GameEvents.current.PauseGame.AddListener(PauseMachine);
         GameEvents.current.ResumeGame.AddListener(ResumeMachine);
+        GameEvents.current.GameOver.AddListener(Die);
 
+    }
+
+    private void Die()
+    {
+        TransitionTo(StateTypes.Death);
     }
 
     private void PauseMachine()
@@ -72,7 +80,7 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0) && _currentState != StateTypes.Attack && combatBehavior.canAttack)
         {
             TransitionTo(StateTypes.Attack);
-            soundEffects.PlayShootSFX();
+            soundManager.PlayLazerSfx();
         }
 
          if (Input.GetKeyDown(KeyCode.Escape))
@@ -91,8 +99,6 @@ public class PlayerStateMachine : MonoBehaviour, BaseStateMachine
         {
             TransitionTo(StateTypes.Death);
         }
-
-
     }
 
 

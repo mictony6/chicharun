@@ -12,26 +12,33 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float rangedSpawnChance;
     [SerializeField] Transform playerTransform;
     [SerializeField] float spawnDistance;
-    private SoundManager soundEffects;
     private float timeToNextSpawn;
     private bool active = true;
+    private SoundEffects soundManager;
 
-    private int[] expThreshold = { 100, 300, 400, 700, 1100 };
+    // private int[] expThreshold = { 100, 300, 400, 700, 1100 };
 
-    private int spawnLevel = 0;
-    private int totalExp = 0;
+    // private int spawnLevel = 0;
+    // private int totalExp = 0;
     private bool bossAlive = false;
+    // private bool canSummonBoss = false;
 
     private void Start()
     {
         GameEvents.current.PauseGame.AddListener(Stop);
         GameEvents.current.ResumeGame.AddListener(Resume);
-        GameEvents.current.EnemyDeath.AddListener(OnEnemyDeath);
+        // GameEvents.current.EnemyDeath.AddListener(OnEnemyDeath);
+        GameEvents.current.SummonBoss.AddListener(SpawnBoss);
+        GameEvents.current.BossDeath.AddListener(OnBossDeath);
+        GameEvents.current.MileStoneAchieved.AddListener(IncreaseDifficulty);
 
-        soundEffects = GameObject.Find("SoundManager").GetComponent<SoundManager>();
-
+        soundManager = SoundEffects.current;
     }
 
+    private void OnBossDeath()
+    {
+        bossAlive = false;
+    }
 
     void Stop()
     {
@@ -43,40 +50,43 @@ public class EnemySpawner : MonoBehaviour
         active = true;
     }
 
-    void OnEnemyDeath(int exp)
-    {
-        totalExp += exp;
-        if (totalExp > expThreshold[spawnLevel])
-        {
-            spawnLevel += 1;
-            if (spawnLevel >= expThreshold.Length)
-            {
-                if (!bossAlive)
-                {
-                    GameEvents.current.SpawnBoss.Invoke();
-                    SpawnBoss();
-                    bossAlive = true;
-
-                }
-                spawnLevel = expThreshold.Length - 1;
-                return;
-            }
-            IncreaseDifficulty();
-        }
-        soundEffects.PlayEnemyHitSFX();
-    }
+    // void OnEnemyDeath(int exp)
+    // {
+    //     totalExp += exp;
+    //     // if (totalExp > expThreshold[spawnLevel])
+    //     // {
+    //     //     spawnLevel += 1;
+    //     //     if (spawnLevel >= expThreshold.Length)
+    //     //     {
+    //     //         //if (!bossAlive)
+    //     //         //{
+    //     //         //    Debug.Log("You can summon the boss now");
+    //     //         //    canSummonBoss = true;
+    //     //         //
+    //     //         //}
+    //     //         spawnLevel = expThreshold.Length - 1;
+    //     //         return;
+    //     //     }
+    //     //     IncreaseDifficulty();
+    //     // }
+    // }
 
     private void SpawnBoss()
     {
+        // soundManager.PlayBossSound(); not sure yet
+        if (bossAlive) return;
+        soundManager.PlayBossSound();
+        bossAlive = true;
         Vector3 randomPos = GetRandomOffScreenPosition();
-        Instantiate(bossEnemyPrefab, randomPos, Quaternion.identity);
+        GameObject boss = Instantiate(bossEnemyPrefab, randomPos, Quaternion.identity);
+        GameEvents.current.SpawnBoss.Invoke(boss);
 
     }
 
-    void IncreaseDifficulty()
+    void IncreaseDifficulty(int milestone)
     {
         Debug.Log("Difficulty Increased");
-        spawnRate *= 0.95f;
+        spawnRate *= 0.75f;
 
 
     }

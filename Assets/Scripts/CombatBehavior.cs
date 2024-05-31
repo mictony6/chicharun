@@ -19,7 +19,6 @@ public class CombatBehavior : MonoBehaviour
     public int expDrop;
     public float damageModifier = 1;
     public float critChance = 0.05f;
-    public SoundManager soundEffects;
 
     [SerializeField] public float attackInterval = 0.75f;
     private float timeTillNextAttack;
@@ -27,6 +26,7 @@ public class CombatBehavior : MonoBehaviour
 
     private bool isInvincible = false;
 
+    private SoundEffects soundManager;
 
     void Start()
     {
@@ -35,7 +35,8 @@ public class CombatBehavior : MonoBehaviour
         this._id = CombatBehavior.lastId;
 
         this.currentHealth = maxHealth;
-        soundEffects = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        GameEvents.current.HeartCollected.AddListener(IncreaseMaxHealth);
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundEffects>();
     }
 
     public int GetId()
@@ -57,7 +58,6 @@ public class CombatBehavior : MonoBehaviour
     {
         if (isInvincible)
         {
-            Debug.Log("Is Invincible");
             return;
         }
 
@@ -72,10 +72,11 @@ public class CombatBehavior : MonoBehaviour
         if (currentHealth < 0)
         {
             currentHealth = 0;
+            
         }
 
         isInvincible = true;
-        soundEffects.PlayPlayerHitSFX();
+        soundManager.PlayPlayerHitSfx();
     }
 
     public int GetDamage()
@@ -171,7 +172,6 @@ public class CombatBehavior : MonoBehaviour
     private IEnumerator InvincibilityFrames()
     {
         yield return new WaitForSecondsRealtime(2.0f);
-        Debug.Log("Is No Longer Invincible");
         isInvincible = false;
     }
 }
